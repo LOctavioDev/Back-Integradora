@@ -1,0 +1,12 @@
+# Directorio de módulos de Node.js
+node_modules/
+
+# Archivos generados por IDEs
+.DS_Store
+.idea/
+
+# Archivos de configuración locales
+.env
+
+# Archivos y directorios de configuración de VS Code
+.vscode/
