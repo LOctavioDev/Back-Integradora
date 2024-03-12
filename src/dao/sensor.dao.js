@@ -1,4 +1,4 @@
-import sensorModel from "../models/sensor.model";
+import sensorModel from "../models/sensor.Model.js";
 const sensorDao = {}
 
 sensorDao.addSensor = async (sensor) => {

@@ -1,7 +1,6 @@
-import express from 'express';
+import app from './app.js';
 
-const app = express();
-
+import mongoose from './database.js';
 
 app.get('/', (req, res) => {
   res.send('first');
