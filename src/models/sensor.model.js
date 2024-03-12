@@ -14,8 +14,16 @@ const sensorSchema = new Schema({
         required: false // Campo no obligatorio
     },
     owner : String,
-    startsAt : Date, // * de la Wemos
-    endsAt : Date, // * de la Wemos
+    startsAt: {
+        type: Date,
+        default: Date.now,
+        required: false // Campo no obligatorio
+    },
+    endsAt: {
+        type: Date,
+        default: () => new Date(Date.now() + 5000), // Dependiendo del delay que se asignrara
+        required: false // Campo no obligatorio
+    },
     readings : []
 },{
     timestamps: false,

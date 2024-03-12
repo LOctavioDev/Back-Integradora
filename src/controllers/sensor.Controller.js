@@ -3,7 +3,7 @@ import sensorModel from "../models/sensor.Model.js";
 const sensorController  = {};
 
 sensorController.insertOne  = async (req, res) => {
-    console.log(req.body)
+
     sensorDao.addSensor(req.body)
     .then((result) => {
         res.status(201).json({message: "Sensor creado"});
