@@ -30,4 +30,15 @@ const sensorSchema = new Schema({
     versionKey: false
 })  
 
-export default model('Rooms', sensorSchema);
+const room1 = model('room1', sensorSchema);
+const room2 = model('room2', sensorSchema);
+const room3 = model('room3', sensorSchema);
+const bathroom1 = model('bathroom1', sensorSchema);
+const bathroom2 = model('bathroom2', sensorSchema);
+const livingRoom = model('livingRoom', sensorSchema);
+const kitchen = model('kitchen', sensorSchema);
+const garaje = model('garaje', sensorSchema);
+
+// export default model('sensorModel', sensorSchema)
+
+export { room1, room2, room3, bathroom1, bathroom2, livingRoom, kitchen, garaje };
