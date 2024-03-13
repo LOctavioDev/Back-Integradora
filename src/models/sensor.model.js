@@ -30,4 +30,4 @@ const sensorSchema = new Schema({
     versionKey: false
 })  
 
-export default model('Sensor', sensorSchema);
+export default model('Rooms', sensorSchema);
