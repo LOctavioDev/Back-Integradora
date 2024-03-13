@@ -1,5 +1,5 @@
 import sensorDao from "../dao/sensor.dao.js";
-import sensorModel from "../models/sensor.Model.js";
+import sensorModel from "../models/sensor.model.js";
 const sensorController  = {};
 
 sensorController.insertOne  = async (req, res) => {
