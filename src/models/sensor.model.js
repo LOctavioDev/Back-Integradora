@@ -2,10 +2,7 @@ import { model, Schema } from "mongoose";
 
 const sensorSchema = new Schema({
     type : String, 
-    name : String,
-    brand : String,
-    model : String,
-    specifications : [],
+    identifier:String,
     location : String,
     status : String,
     initialDate: {
