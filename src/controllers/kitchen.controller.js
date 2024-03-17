@@ -4,10 +4,10 @@
     kitchenController.addSensorHumidity = async (req, res) => {
         kitchenDao.addSensorHumidity(req.body)
             .then(kitchen => res.json({
-                message: "Humedad y temperatura de la cocina registrados correctamente",
+                success:true,
             }))
             .catch(err => res.status(500).json({
-                "message": "Error al registrar humedad y temperatura de la cocina",
+                success:false,
                 error: err.message}));
     }
 
