@@ -5,6 +5,7 @@ bathroomController.addSensorOne = async (req, res) => {
     bathroomDao.addSensorOne(req.body)
         .then(room1 => res.json({
             success : true,
+            data: room1 
         }))
         .catch(err => res.status(500).json({
             success: false,
@@ -21,4 +22,15 @@ bathroomController.addSensorTwo = async (req, res) => {
         error : err.msg}));
 }
 
+bathroomController.getTemeperature = async (req, res) => {
+    bathroomDao.getTemeperature()
+        .then(room1 => 
+            res.json({
+            success : true,
+            data : room1
+        }))
+        .catch(err => res.status(500).json({
+            success: false,
+            error : err.msg}));
+}
 export default bathroomController;
