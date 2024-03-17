@@ -28,4 +28,4 @@ const actionGaragearaje = model('garaje', sensorSchema);
 
 // export default model('sensorModel', sensorSchema)
 
-export { actionRoom1 };
+export { actionRoom1, actionRoom2, actionRoom3, actionBathroom1, actionBathroom2, actionLivingRoom, actionKitchen, actionGaragearaje};

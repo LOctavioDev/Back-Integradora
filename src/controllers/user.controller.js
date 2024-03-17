@@ -30,4 +30,18 @@ userController.validateUser = async (req, res) => {
     });
 }
 
+userController.changePassword = async (req, res) => {
+    userDao.changePassword(req.body)
+    .then((result) => {
+        if(result === false){
+            res.status(400).json({ success: false, message: "Usuario no encontrado" });
+        } else {
+            res.status(200).json({ success: true, message: "Contraseña cambiada" });
+        }
+    })
+    .catch((error) => {
+        res.status(500).json({ success: false, message: "Error al cambiar la contraseña", error: error.msg });
+    });
+}
+
 export default userController;

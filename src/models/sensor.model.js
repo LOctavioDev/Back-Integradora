@@ -21,7 +21,16 @@ const sensorSchema = new Schema({
         default: () => new Date(Date.now() + 5000), // Dependiendo del delay que se asignrara
         required: false // Campo no obligatorio
     },
-    readings : []
+    readings :{
+        type: Array,
+        required: false // Campo no obligatorio
+    
+    },
+    actions:{
+        type: Array,
+        required: false // Campo no obligatorio
+    
+    }
 },{
     timestamps: false,
     versionKey: false

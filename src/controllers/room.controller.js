@@ -31,14 +31,4 @@ roomController.addSensorThree = async (req, res) => {
         error : err.msg}));
 }
 
-
-
-// room1Controller.getSensorHumidity = async (req, res) => {
-//     room1Dao.getSensorHumidity()
-//         .then(room1 => res.json(room1))
-//         .catch(err => res.status(500).json({
-//             "message": "Error al obtener humedad y temperatura de la habitación",
-//             error: err.message}));
-// }
-
 export default roomController;

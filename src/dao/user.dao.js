@@ -24,4 +24,18 @@ userDao.validateUser = async (user) => {
     }
 }
 
+userDao.changePassword = async (user) => {
+    const email = user.email;
+    const password = user.password;
+    const repeatPassword = user.repeatPassword;
+    const userExists = await userModel.findOne({ email: email })
+    if (userExists) {
+        userExists.password = password;
+        return await userExists.save();
+    }
+    else{
+        return false
+    }
+}
+
 export default userDao;
