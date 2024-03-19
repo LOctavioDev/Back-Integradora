@@ -5,4 +5,4 @@ livingRoomDao.addSensor = async (data) => {
     return await livingRoom.create(data);
 }
 
-export default livingRoomDao
+export default livingRoomDao;
