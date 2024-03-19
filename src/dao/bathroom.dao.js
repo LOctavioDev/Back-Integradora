@@ -10,16 +10,77 @@ bathroomDao.addSensorTwo = async (data) => {
    return await bathroom2.create(data);
 }
 
-bathroomDao.getTemeperature = async () => {
-   const data = await bathroom1.aggregate([
+// bathroom 1 
+bathroomDao.getOneTemperature = async () => {
+   return await bathroom1.aggregate([
       {
-         $project: {
-            _id: 0,
-            readings: 1
-         }
+        $match: {
+          "type": "sensor",
+          "readings.name": { $in: ["Humedad", "Temperatura"] }
+        }
+      },
+      {
+        $sort: { "startsAt": -1 }
+      },
+      {
+        $limit: 1
+      },
+      {
+        $project: {
+          "_id": 0,
+          "humedad": {
+            $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Humedad"] } }
+          },
+          "temperatura": {
+            $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Temperatura"] } }
+          }
+        }
+      },
+      {
+        $project: {
+          "Humedad": { $arrayElemAt: ["$humedad.value", 0] },
+          "Temperatura": { $arrayElemAt: ["$temperatura.value", 0] }
+        }
       }
-   ]).limit(1);
-   return data;
+    ]);
+
 }
+
+//bathroom 2
+
+bathroomDao.getTwoTemperature = async () => {
+      return await bathroom2.aggregate([
+         {
+           $match: {
+             "type": "sensor",
+             "readings.name": { $in: ["Humedad", "Temperatura"] }
+           }
+         },
+         {
+           $sort: { "startsAt": -1 }
+         },
+         {
+           $limit: 1
+         },
+         {
+           $project: {
+             "_id": 0,
+             "humedad": {
+               $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Humedad"] } }
+             },
+             "temperatura": {
+               $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Temperatura"] } }
+             }
+           }
+         },
+         {
+           $project: {
+             "Humedad": { $arrayElemAt: ["$humedad.value", 0] },
+             "Temperatura": { $arrayElemAt: ["$temperatura.value", 0] }
+           }
+         }
+       ]);
+       
+      }
 
 export default bathroomDao;

@@ -5,13 +5,14 @@ import roomController from '../controllers/room.controller.js';
 import specificationsController from '../controllers/specifications.controller.js';
 import livingRoomController from '../controllers/livingRoom.controller.js';
 import bathroomController from '../controllers/bathroom.controller.js';
+import garajeController from '../controllers/garaje.controller.js';
 const router = Router();
 
 //Especificaciones de los sensores
 router.post('/specifications', specificationsController.insertOne);
 
 //Insert habitaciones
-
+router.post('/garaje', garajeController.addSensor)
 router.post('/bathroom1', bathroomController.addSensorOne);
 router.post('/bathroom2', bathroomController.addSensorTwo);
 router.post('/kitchen', kitchenController.addSensorHumidity);
