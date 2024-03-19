@@ -3,6 +3,7 @@ import { model, Schema } from "mongoose";
 const sensorSchema = new Schema({
     type : String, 
     identifier:String,
+    name : String,
     location : String,
     status : String,
     initialDate: {

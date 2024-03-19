@@ -11,4 +11,25 @@
                 error: err.message}));
     }
 
+    kitchenController.getGasConcentration = async (req, res) => {
+        kitchenDao.getGasConcentration()
+        .then(room1 => 
+            res.json(room1))
+        .catch(err => res.status(500).json({
+            success: false,
+            error : err.msg}));
+    }
+
+    kitchenController.getTemperature = async (req, res) => 
+    {
+        kitchenDao.getTemperature()
+        .then(room1 => 
+            res.json(room1))
+        .catch(err => res.status(500).json({
+            success: false,
+            error : err.msg}));
+    }
+    
+
+
     export default kitchenController;
