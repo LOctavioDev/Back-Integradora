@@ -4,6 +4,9 @@ const sensorSchema = new Schema({
     type : String, 
     identifier:String,
     name : String,
+    brand: String,
+    model: String,
+    speficications:[],
     location : String,
     status : String,
     initialDate: {
