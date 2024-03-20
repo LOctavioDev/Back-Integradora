@@ -40,4 +40,22 @@ bathroomController.getTwoTemperature = async (req, res) =>{
         error : err.msg}));
 }
 
+bathroomController.getOnePresence = async (req, res) => {
+    bathroomDao.getOnePresence()
+    .then(room1 => 
+        res.json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+bathroomController.getTwoPresence = async (req, res) => {
+    bathroomDao.getTwoPresence()
+    .then(room2 => 
+        res.json(room2))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
 export default bathroomController;
