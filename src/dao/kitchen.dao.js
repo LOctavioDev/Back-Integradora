@@ -11,7 +11,7 @@ kitchenDao.getGasConcentration = async () => {
         {
           $match: {
             "type": "sensor",
-            "readings.name": { $in: ["Concentración de gas"] }
+            "readings.name": { $in: ["Concentracion de Gas"] }
           }
         },
         {
@@ -24,7 +24,7 @@ kitchenDao.getGasConcentration = async () => {
           $project: {
             "_id": 0,
             "Gas": {
-              $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Concentración de Gas"] } }
+              $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Concentracion de Gas"] } }
             }
           }
         },
