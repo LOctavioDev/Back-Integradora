@@ -58,4 +58,14 @@ bathroomController.getTwoPresence = async (req, res) => {
         error : err.msg}));
 }
 
+bathroomController.getExternalLightOne = async (req, res) => {
+ bathroomDao.getExternalLightOne()
+ .then(room2 => 
+    res.json(room2))
+.catch(err => res.status(500).json({
+    success: false,
+    error : err.msg}));
+
+}
+
 export default bathroomController;

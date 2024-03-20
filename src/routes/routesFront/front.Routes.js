@@ -11,10 +11,15 @@ router.get('/room1/temperature', roomController.getOneTemperature)
 router.get('/room2/temperature', roomController.getTwoTemperature)
 router.get('/room3/temperature', roomController.getThreeTemperature)
 router.get('/kitchen/temperature', kitchenController.getTemperature)
+
+
 router.get('/kitchen/gas', kitchenController.getGasConcentration)
 
 //presencia
 router.get('/bathroom1/presence', bathroomController.getOnePresence);
 router.get('/bathroom2/presence', bathroomController.getTwoPresence);
+
+//LUZ EXTERIOR
+router.get('/bathroom2/external-light', bathroomController.getExternalLightOne)
 
 export default router;
