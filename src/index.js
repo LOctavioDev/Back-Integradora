@@ -1,4 +1,5 @@
 import app from './app.js';
+import mongoose from './database.js';
 import swaggerUi from 'swagger-ui-express'; 
 import swaggerSpec from './swaggerConfig.js'; 
 

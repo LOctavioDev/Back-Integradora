@@ -11,8 +11,8 @@ bathroomDao.getOneTemperature = async () => {
   return await bathroom1.aggregate([
     {
       $match: {
-        "type": "sensor",
-        "readings.name": { $in: ["Humedad", "Temperatura"] }
+        "type": { $regex: /sensor/i }, // Utilizamos $regex para buscar "sensor"
+        "readings.name": { $regex: /Humedad|Temperatura/i } // Utilizamos $regex para buscar "Humedad" o "Temperatura"
       }
     },
     {
@@ -25,10 +25,10 @@ bathroomDao.getOneTemperature = async () => {
       $project: {
         "_id": 0,
         "humedad": {
-          $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Humedad"] } }
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Humedad/i } } }
         },
         "temperatura": {
-          $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Temperatura"] } }
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Temperatura/i } } }
         }
       }
     },
@@ -45,8 +45,8 @@ bathroomDao.getOnePresence = async () => {
   return await bathroom1.aggregate([
     {
       $match: {
-        "type": "sensor",
-        "readings.name": { $in: ["Presencia Detectada"] }
+        "type": { $regex: /sensor/i }, // Utilizamos $regex para buscar "sensor"
+        "readings.name": { $regex: /Presencia/i } // Utilizamos $regex para buscar "Presencia"
       }
     },
     {
@@ -59,25 +59,25 @@ bathroomDao.getOnePresence = async () => {
       $project: {
         "_id": 0,
         "Presencia": {
-          $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Presencia Detectada"] } }
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Presencia/i } } }
         }
       }
     },
     {
       $project: {
-        "Presencia": { $arrayElemAt: ["$Presencia.value", 0] },
+        "Presencia": { $arrayElemAt: ["$Presencia.value", 0] }
       }
     }
-  ])
+  ]);
 }
 
 bathroomDao.getExternalLightOne = async () => {
-  return await bathroom2.aggregate([
+  return await bathroom1.aggregate([
     {
       $match: {
-        "type": "Actuador",
+        "type": { $regex: /Actuador/i }, // Utilizamos $regex para buscar "Actuador"
         "location": "Baño 1",
-        "readings.name": { $in: ["Luz apagada", "Luz encendida"] }
+        "actions.name": { $regex: /Luz apagada|Luz encendida/i } // Utilizamos $regex para buscar "Luz apagada" o "Luz encendida"
       }
     },
     {
@@ -91,32 +91,32 @@ bathroomDao.getExternalLightOne = async () => {
         "_id": 0,
         "Luz": {
           $arrayElemAt: [{
-            $filter: { input: "$readings", cond: { $in: ["$$this.name", ["Luz apagada", "Luz encendida"]] } }
+            $filter: { input: "$actions", cond: { $regexMatch: { input: "$$this.name", regex: /Luz\s(apagada|encendida)/i } } }
           }, 0]
         }
       }
+      
     },
     {
       $project: {
-        "estatus_luz": "$Luz.value"
+        "Luz": "$Luz.value",
+        
       }
     }
   ]);
 }
-
-
 // Baño 2 
-
 bathroomDao.addSensorTwo = async (data) => {
   return await bathroom2.create(data);
+
 }
 
 bathroomDao.getTwoTemperature = async () => {
   return await bathroom2.aggregate([
     {
       $match: {
-        "type": "sensor",
-        "readings.name": { $in: ["Humedad", "Temperatura"] }
+        "type": { $regex: /sensor/i }, // Utilizamos $regex para buscar "sensor"
+        "readings.name": { $regex: /Humedad|Temperatura/i } // Utilizamos $regex para buscar "Humedad" o "Temperatura"
       }
     },
     {
@@ -129,10 +129,10 @@ bathroomDao.getTwoTemperature = async () => {
       $project: {
         "_id": 0,
         "humedad": {
-          $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Humedad"] } }
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Humedad/i } } }
         },
         "temperatura": {
-          $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Temperatura"] } }
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Temperatura/i } } }
         }
       }
     },
@@ -149,8 +149,8 @@ bathroomDao.getTwoPresence = async () => {
   return await bathroom2.aggregate([
     {
       $match: {
-        "type": "sensor",
-        "readings.name": { $in: ["Presencia Detectada"] }
+        "type": { $regex: /sensor/i }, // Utilizamos $regex para buscar "sensor"
+        "readings.name": { $regex: /Presencia/i } // Utilizamos $regex para buscar "Presencia"
       }
     },
     {
@@ -163,16 +163,57 @@ bathroomDao.getTwoPresence = async () => {
       $project: {
         "_id": 0,
         "Presencia": {
-          $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Presencia Detectada"] } }
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Presencia/i } } }
         }
       }
     },
     {
       $project: {
-        "Presencia": { $arrayElemAt: ["$Presencia.value", 0] },
+        "Presencia": { $arrayElemAt: ["$Presencia.value", 0] }
       }
     }
-  ])
+  ]);
+}
+
+bathroomDao.getExternalLightTwo = async () => {
+  return await bathroom2.aggregate([
+    {
+      $match: {
+        "type": { $regex: /Actuador/i }, // Utilizamos $regex para buscar "Actuador"
+        "location": "Baño 2",
+        "actions.name": { $regex: /Luz apagada|Luz encendida/i } // Utilizamos $regex para buscar "Luz apagada" o "Luz encendida"
+      }
+    },
+    {
+      $sort: { "startsAt": -1 }
+    },
+    {
+      $limit: 1
+    },
+    {
+      $project: {
+        "_id": 0,
+        "Luz": {
+          $arrayElemAt: [{
+            $filter: { input: "$actions", cond: { $regexMatch: { input: "$$this.name", regex: /Luz\s(apagada|encendida)/i } } }
+          }, 0]
+        }
+      }
+      
+    },
+    {
+      $project: {
+        "Luz": "$Luz.value",
+        
+      }
+    }
+  ]);
+}
+
+bathroomDao.deleteData = async () => {
+  await bathroom1.deleteMany();
+  await bathroom2.deleteMany();
+  return true;
 }
 
 export default bathroomDao;

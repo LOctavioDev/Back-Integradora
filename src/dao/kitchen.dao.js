@@ -70,5 +70,8 @@ kitchenDao.getTemperature = async () => {
   ]);
 }
 
+kitchenDao.deleteData = async () => {
+    return await kitchen.deleteMany();
+}
 
 export default kitchenDao;

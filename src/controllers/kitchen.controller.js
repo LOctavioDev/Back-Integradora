@@ -24,7 +24,7 @@
     {
         kitchenDao.getTemperature()
         .then(room1 => 
-            res.json(room1))
+            res.status(200).json(room1))
         .catch(err => res.status(500).json({
             success: false,
             error : err.msg}));

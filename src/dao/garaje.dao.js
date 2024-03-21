@@ -5,4 +5,8 @@ garajeDao.addSensor = async (data) => {
     return await garaje.create(data);
 }
 
+garajeDao.deleteData = async () => {
+    return await garaje.deleteMany();
+}
+
 export default garajeDao;
