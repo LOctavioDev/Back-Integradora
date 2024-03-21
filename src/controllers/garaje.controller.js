@@ -12,4 +12,5 @@ garajeController.addSensor = async (req, res) => {
     }));
 }
 
+
 export default garajeController;

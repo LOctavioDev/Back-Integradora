@@ -28,7 +28,7 @@ bathroomController.getOneTemperature = async (req, res) => {
             res.json(room1))
         .catch(err => res.status(500).json({
             success: false,
-            error : err.msg}));
+            error : err}));
 }
 
 bathroomController.getTwoTemperature = async (req, res) =>{
@@ -67,5 +67,16 @@ bathroomController.getExternalLightOne = async (req, res) => {
     error : err.msg}));
 
 }
+
+bathroomController.getExternalLightTwo = async (req, res) => {
+    bathroomDao.getExternalLightTwo()
+    .then(room2 => 
+        res.json(room2))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+
 
 export default bathroomController;
