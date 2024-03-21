@@ -1,6 +1,9 @@
 import app from './app.js';
+import swaggerUi from 'swagger-ui-express'; 
+import swaggerSpec from './swaggerConfig.js'; 
 
-import mongoose from './database.js';
+// RUTA DE LA CONFIGURACION
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/', (req, res) => {
   res.send('first');
