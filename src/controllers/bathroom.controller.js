@@ -77,6 +77,58 @@ bathroomController.getExternalLightTwo = async (req, res) => {
         error : err.msg}));
 }
 
+bathroomController.getInternalLightOne = async (req, res) => {
+    bathroomDao.getInternalLightOne()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
 
+bathroomController.getInternalLightTwo = async (req, res) => {
+    bathroomDao.getInternalLightTwo()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
 
+bathroomController.getFanOne = async (req, res) => {
+    bathroomDao.getFanOne()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+bathroomController.getFanTwo = async (req, res) => {
+    bathroomDao.getFanTwo()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+bathroomController.getWindowOne = async (req, res) => {
+    bathroomDao.getWindowOne()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+bathroomController.getWindowTwo = async (req, res) => {
+    bathroomDao.getWindowTwo()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+
+}
 export default bathroomController;

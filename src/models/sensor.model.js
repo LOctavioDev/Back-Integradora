@@ -6,7 +6,11 @@ const sensorSchema = new Schema({
     name : String,
     brand: String,
     model: String,
-    speficications:[],
+    specifications:{
+        type: Array,
+        required: false // Campo no obligatorio
+    
+    },
     location : String,
     status : String,
     initialDate: {
