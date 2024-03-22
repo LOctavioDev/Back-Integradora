@@ -15,24 +15,51 @@ livingRoomController.addSensor = async (req, res) => {
 
 livingRoomController.getTemperature = async (req, res) => {
     livingRoomDao.getTemperature()
-    then(data => res.status(200).json({
-        status: true,
-    }))
+    .then(data =>
+        res.status(200).json(data))
     .catch(err => res.status(500).json({
-        status: false,
+        success: false,
         error: err.msg
     }));
 }
 
 livingRoomController.getInternalLight = async (req, res) => {
     livingRoomDao.getInternalLight()
-    then(data => res.status(200).json({
-        status: true,
-    }))
+    .then(data =>
+            res.status(200).json(data))
+        .catch(err => res.status(500).json({
+            success: false,
+            error: err.msg
+        }));
+}
+
+livingRoomController.getFan = async (req, res) => {
+    livingRoomDao.getFan()
+        .then(room1 =>
+            res.status(200).json(room1))
+        .catch(err => res.status(500).json({
+            success: false,
+            error: err.msg
+        }));
+}
+livingRoomController.getWindow = async (req, res) => {
+    livingRoomDao.getWindow() 
+    .then(room1 =>
+        res.status(200).json(room1))
     .catch(err => res.status(500).json({
-        status: false,
+        success: false,
         error: err.msg
     }));
 }
+
+livingRoomController.getDoor = async (req, res) => {
+    livingRoomDao.getDoor()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}  
 
 export default livingRoomController;
