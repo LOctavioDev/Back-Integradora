@@ -4,6 +4,8 @@ import roomController from "../../controllers/room.controller.js";
 import generalController from "../../controllers/general.controller.js";
 import { Router } from "express";
 import livingRoomController from "../../controllers/livingRoom.controller.js";
+import { garaje } from "../../models/sensor.model.js";
+import garajeController from "../../controllers/garaje.controller.js";
 const router = Router();
 
 //TEMPERATURA
@@ -12,7 +14,7 @@ router.get('/room1/temperature', roomController.getOneTemperature)
 router.get('/room2/temperature', roomController.getTwoTemperature)
 router.get('/room3/temperature', roomController.getThreeTemperature)
 router.get('/kitchen/temperature', kitchenController.getTemperature)
-router.get('livingroom/temperature', livingRoomController.getTemperature)
+router.get('/livingroom/temperature', livingRoomController.getTemperature)
 
 //GAS   
 router.get('/kitchen/gas', kitchenController.getGasConcentration)
@@ -29,7 +31,7 @@ router.get('/bathroom2/presence', bathroomController.getTwoPresence);
 // router.get('/room3/external-light', roomController.getExternalLightThree)
 // router.get('/kitchen/external-light', kitchenController.getExternalLight)
 
-//LUZ INTERIOR
+//LUZ INTERIOR SON 8
 router.get('/kitchen/internal-light', kitchenController.getInternalLight)
 router.get('/room1/internal-light', roomController.getInternalLightOne)
 router.get('/room2/internal-light', roomController.getInternalLightTwo)
@@ -37,6 +39,7 @@ router.get('/room3/internal-light', roomController.getInternalLightthree)
 router.get('/bathroom1/internal-light', bathroomController.getInternalLightOne)
 router.get('/bathroom2/internal-light', bathroomController.getInternalLightTwo)
 router.get('/livingroom/internal-light', livingRoomController.getInternalLight)
+router.get('/garaje/internal-light', garajeController.getInternalLight)
 
 // VENTILADOR
 router.get('/kitchen/fan', kitchenController.getFan)
@@ -45,12 +48,14 @@ router.get('/bathroom2/fan', bathroomController.getFanTwo)
 router.get('/room1/fan', roomController.getFanOne)
 router.get('/room2/fan', roomController.getFanTwo)
 router.get('/room3/fan', roomController.getFanThree)
+router.get('/livingroom/fan', livingRoomController.getFan)
 
 // PUERTAS
 router.get('/kitchen/door', kitchenController.getDoor)
 router.get('/room1/door', roomController.getDoorOne)
 router.get('/room2/door', roomController.getDoorTwo)
 router.get('/room3/door', roomController.getDoorThree)
+router.get('/livingroom/door', livingRoomController.getDoor)
 
 
 // VENTANAS

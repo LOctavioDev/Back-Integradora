@@ -48,7 +48,7 @@ livingRoomDao.getInternalLight = async () => {
         {
             $match: {
                 "type": { $regex: /Actuador/i }, // Utilizamos $regex para buscar "Actuador"
-                "location": "Cocina",
+                "location": "Sala",
                 "name":"Luz Interior",
                 "actions.name": { $regex: /Luz interior\s(apagada|encendida)/i } // Ajustamos la expresión regular para que coincida con "Luz interior apagada" o "Luz interior encendida"
             }
@@ -72,10 +72,85 @@ livingRoomDao.getInternalLight = async () => {
         },
         {
             $project: {
-                "Luz interior": "$Luz.value",
+                "isOn": "$Luz.value",
     
             }
         }
     ]);
 }
+
+
+livingRoomDao.getFan = async () => {
+    return await livingRoom.aggregate([
+        {
+            $match: {
+                "type": { $regex: /Actuador/i },
+                "name": "Ventilador",
+                "actions.name": { $regex: /Ventilador encendido|Ventilador apagado/i }
+            }
+        },
+        {
+            $sort: { "startsAt": -1 }
+        },
+        {
+            $limit: 1
+        },
+        {
+            $project: {
+                "_id": 0,
+                "isOn": { $arrayElemAt: ["$actions.value", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
+            }
+        }
+      ]);
+  }
+  
+  livingRoomDao.getDoor = async () => {
+    return await livingRoom.aggregate([
+      {
+          $match: {
+              "type": "Actuador",
+              "name": "Puerta",
+              "actions.name": { $regex: /Puerta abierta|Puerta cerrada/i }
+          }
+      },
+      {
+          $sort: { "startsAt": -1 }
+      },
+      {
+          $limit: 1
+      },
+      {
+          $project: {
+              "_id": 0,
+              "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
+          }
+      }
+    ]);
+  }
+  
+  livingRoomDao.getWindow = async () => {
+    return await livingRoom.aggregate([
+      {
+          $match: {
+              "type": "Actuador",
+              "name": "Ventana Sencilla",
+              "actions.name": { $regex: /Ventana cerrada|Ventana abierta/i }
+          }
+      },
+      {
+          $sort: { "startsAt": -1 }
+      },
+      {
+          $limit: 1
+      },
+      {
+          $project: {
+              "_id": 0,
+              "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
+          }
+      }
+    ]);
+  }
+  
+
 export default livingRoomDao;
