@@ -102,7 +102,7 @@ kitchenDao.getExternalLight = async () => {
       },
       {
           $project: {
-              "Luz Exterior": "$Luz.value",
+              "isOn": "$Luz.value",
 
           }
       }
@@ -138,7 +138,7 @@ kitchenDao.getInternalLight = async () => {
     },
     {
         $project: {
-            "Luz interior": "$Luz.value",
+            "isOn": "$Luz.value",
 
         }
     }

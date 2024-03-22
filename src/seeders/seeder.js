@@ -209,7 +209,7 @@ async function seedData() {
                 "status": "Disponible",
                 "owner": "TurtleFS",
                 "actions": [{
-                    "name": "Apertura de ventana",
+                    "name": "Ventana abierta",
                     "degrees": 95,
                     "status": true
 
@@ -246,7 +246,7 @@ async function seedData() {
                 "status": "Disponible",
                 "owner": "TurtleFS",
                 "actions": [{
-                    "name": "Apertura de ventana",
+                    "name": "Ventana abierta",
                     "degrees": 95,
                     "status": true
 
@@ -282,7 +282,7 @@ async function seedData() {
                 "status": "Disponible",
                 "owner": "TurtleFS",
                 "actions": [{
-                    "name": "Apertura de puerta",
+                    "name": "Puerta abierta",
                     "degrees": 95,
                     "status": true
 

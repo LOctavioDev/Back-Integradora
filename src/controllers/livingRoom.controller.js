@@ -24,4 +24,15 @@ livingRoomController.getTemperature = async (req, res) => {
     }));
 }
 
+livingRoomController.getInternalLight = async (req, res) => {
+    livingRoomDao.getInternalLight()
+    then(data => res.status(200).json({
+        status: true,
+    }))
+    .catch(err => res.status(500).json({
+        status: false,
+        error: err.msg
+    }));
+}
+
 export default livingRoomController;
