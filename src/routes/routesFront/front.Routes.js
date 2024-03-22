@@ -43,8 +43,8 @@ router.get('/garaje/internal-light', garajeController.getInternalLight)
 
 // VENTILADOR
 router.get('/kitchen/fan', kitchenController.getFan)
-router.get('/bathroom1/fan', bathroomController.getFanOne)
-router.get('/bathroom2/fan', bathroomController.getFanTwo)
+// router.get('/bathroom1/fan', bathroomController.getFanOne)
+// router.get('/bathroom2/fan', bathroomController.getFanTwo)
 router.get('/room1/fan', roomController.getFanOne)
 router.get('/room2/fan', roomController.getFanTwo)
 router.get('/room3/fan', roomController.getFanThree)
@@ -62,9 +62,11 @@ router.get('/livingroom/door', livingRoomController.getDoor)
 router.get('/kitchen/window', kitchenController.getWindow)
 router.get('/bathroom1/window', bathroomController.getWindowOne)
 router.get('/bathroom1/window', bathroomController.getWindowTwo)
+router.get('/livingroom/window', livingRoomController.getWindow)
 
 
 //BORRAR DATOS -PROMISE-
 router.get('/delete', generalController.deleteData)
 
 export default router;
+
