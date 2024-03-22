@@ -22,18 +22,21 @@ router.get('/bathroom1/presence', bathroomController.getOnePresence);
 router.get('/bathroom2/presence', bathroomController.getTwoPresence);
 
 //LUZ EXTERIOR
-router.get('/bathroom2/external-light', bathroomController.getExternalLightTwo)
-router.get('/bathroom1/external-light', bathroomController.getExternalLightOne)
-router.get('/room1/external-light', roomController.getExternalLightOne)
-router.get('/room2/external-light', roomController.getExternalLightTwo)
-router.get('/room3/external-light', roomController.getExternalLightThree)
-router.get('/kitchen/external-light', kitchenController.getExternalLight)
+// router.get('/bathroom2/external-light', bathroomController.getExternalLightTwo)
+// router.get('/bathroom1/external-light', bathroomController.getExternalLightOne)
+// router.get('/room1/external-light', roomController.getExternalLightOne)
+// router.get('/room2/external-light', roomController.getExternalLightTwo)
+// router.get('/room3/external-light', roomController.getExternalLightThree)
+// router.get('/kitchen/external-light', kitchenController.getExternalLight)
 
 //LUZ INTERIOR
 router.get('/kitchen/internal-light', kitchenController.getInternalLight)
 router.get('/room1/internal-light', roomController.getInternalLightOne)
 router.get('/room2/internal-light', roomController.getInternalLightTwo)
 router.get('/room3/internal-light', roomController.getInternalLightthree)
+router.get('/bathroom1/internal-light', bathroomController.getInternalLightOne)
+router.get('/bathroom2/internal-light', bathroomController.getInternalLightTwo)
+router.get('/livingroom/internal-light', livingRoomController.getInternalLight)
 
 // VENTILADOR
 router.get('/kitchen/fan', kitchenController.getFan)
