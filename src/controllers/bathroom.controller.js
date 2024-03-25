@@ -131,4 +131,43 @@ bathroomController.getWindowTwo = async (req, res) => {
         error : err.msg}));
 
 }
+
+bathroomController.getDoorOne = async (req, res) => {
+    bathroomDao.getDoorOne()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+bathroomController.getDoorTwo = async (req, res) => {
+    bathroomDao.getDoorTwo()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+bathroomController.deleteDataOne = async (req, res) => {
+    bathroomDao.deleteDataOne()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}
+bathroomController.deleteDataTwo = async (req, res) => {
+    bathroomDao.deleteDataTwo()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}
+
+
 export default bathroomController;

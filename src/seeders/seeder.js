@@ -219,7 +219,7 @@ async function seedData() {
                     "meausurementUnit": "°"
                 }]
 
-            }, 
+            },
             {
                 // Actuador 5 - Ventana Sencilla
                 "type": "Actuador",

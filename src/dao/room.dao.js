@@ -236,7 +236,7 @@ roomDao.getInternalLightOne = async () => {
     {
         $match: {
             "type": { $regex: /Actuador/i }, // Utilizamos $regex para buscar "Actuador"
-            "location": "Cocina",
+            "location": "Recamara 1",
             "name":"Luz Interior",
             "actions.name": { $regex: /Luz interior\s(apagada|encendida)/i } // Ajustamos la expresión regular para que coincida con "Luz interior apagada" o "Luz interior encendida"
         }
