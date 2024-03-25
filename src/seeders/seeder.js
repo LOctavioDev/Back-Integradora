@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import chalk from "chalk";
 // Conecta a la base de datos
-mongoose.connect('mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority')
+mongoose.connect('mongodb://localhost:22062/integradora')
     .then(() => {
         console.log(
             chalk.green(
@@ -12,7 +12,7 @@ mongoose.connect('mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.n
     .catch((err) => {
         console.error(chalk.red("THERE IS A ERROR"), err);
     });
-import { kitchen, bathroom1, bathroom2, room1, room2, room3,livingRoom, garaje } from "../models/sensor.model.js";
+import { kitchen, bathroom1, bathroom2, room1, room2, room3, livingRoom, garaje } from "../models/sensor.model.js";
 
 
 async function seedData() {
@@ -217,7 +217,7 @@ async function seedData() {
 
                 }]
 
-            }, 
+            },
             {
                 // Actuador 5 ventana sencilla
                 "type": "Actuador",
@@ -294,83 +294,7 @@ async function seedData() {
         /******RECAMARA-1******/
         await kitchen.insertMany(kitchenSensors)
 
-        // ***********RECAMARA1************
-        const room1Sensors = [{
-            "type":"Sensor",
-            "identifier":"S1R1MV",
-            "name":"Temperatura y Humedad",
-            "brand":"Steren",
-            "model":"DHT11",
-            "specifications":[
-                {
-                    "name": "VCD",
-                    "value":5, 
-                    "units":"Volts"
-                },
-                {
-                    "range":"Rango de Temperatura",
-                    "minValue":0,
-                    "maxValue":50,
-                    "measurementUnit":"°C"
-                },
-                {
-                    "range":"Rango de Humedad",
-                    "minValue":0,
-                    "maxValue":100,
-                     "measurementUnit":"RH"
-                }
-                
-            ],
-            "location":"Recámara 1",
-            "status":"Disponible",
-            "owner":"MVC",
-            "readings": [
-                        {
-                            "name": "Deteccion de humedad",
-                            "value": 14,
-                            "measuramentUnit": "HR%"
-                        },
-                        {
-                            "name": "Deteccion de temperatura",
-                            "value": 24,
-                            "measuramentUnit": "°C"
-                        }
-                    ]
-        },{
-            "type": "Sensor",
-            "identifier":"S1R1MV",
-            "name": "Fotorresistencia",
-            "brand": "Ipower",
-            "model": "LDR 5mm",
-            "specifications": [
-              {
-                "name": "Rango de Luz",
-                "maxValue": 50,
-                "minValue": 30,
-                "measurementUnit": "Lux"
-              },
-              {
-                "name": "Alimentación de Energía",
-                "maxValue": 5,
-                "minValue": 3.3,
-                "measurementUnit": "V"
-              },
-              {
-                "name": "Intensidad",
-                "maxValue": 1024,
-                "minValue": 0
-              }
-            ],
-            "location": "Recámara  1",
-            "status": "Disponible",
-            "owner": "MVC",
-            "readings":[{
-                "name": "Lectura de Intensidad de Luz",
-                "intensity": 40,
-                "measurementUnit": "Unidad"
-            }]
-          },]
-        // ****************************
+
         console.log('Data seeded')
     } catch (error) {
         console.log(error)

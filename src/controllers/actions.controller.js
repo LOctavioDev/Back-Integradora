@@ -1,7 +1,7 @@
 import axios from "axios"
 const actions = {}
 
-const arduinoIP = "192.168.137.66"
+const arduinoIP = "192.168.0.163"
 const arduinoPort = "3000"
 
 actions.room1Door = async (req, res) => {

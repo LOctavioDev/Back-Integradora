@@ -209,11 +209,20 @@ bathroomDao.getExternalLightTwo = async () => {
     }
   ]);
 }
-
 bathroomDao.deleteData = async () => {
   await bathroom1.deleteMany();
   await bathroom2.deleteMany();
-  return true;
+  return true
+}
+
+bathroomDao.deleteDataOne = async () => {
+  await bathroom1.deleteMany();
+ return true;
+}
+
+bathroomDao.deleteDataTwo = async () => {
+  await bathroom2.deleteMany();
+ return true;
 }
 
 

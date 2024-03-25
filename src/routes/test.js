@@ -42,16 +42,35 @@ router.post('/specifications', specificationsController.insertOne);
 
 /**
  * @swagger
- * /api/sensors/garaje:
- *   post:
- *     summary: Agrega un sensor en el garaje.
- *     description: Agrega un nuevo sensor al sistema ubicado en el garaje.
- *     tags:
- *       - Sensores
- *     responses:
- *       200:
- *         description: Sensor agregado correctamente en el garaje.
- */
+* /api/sensors/garaje:
+*   post:
+*     summary: Agrega un sensor en el garaje.
+*     description: Agrega un nuevo sensor al sistema ubicado en el garaje.
+*     tags:
+*       - Sensores
+*     parameters:
+*       - in: body
+*         name: sensor
+*         description: Información del sensor a agregar.
+*         required: true
+*         schema:
+*           type: object
+*           properties:
+*             id:
+*               type: integer
+*               description: ID del sensor.
+*             name:
+*               type: string
+*               description: Nombre del sensor.
+*             location:
+*               type: string
+*               description: Ubicación del sensor en el garaje.
+*     responses:
+*       200:
+*         description: Sensor agregado correctamente en el garaje.
+*       500:
+*          description: Error al agregar el sensor en el garaje.
+*/
 router.post('/garaje', garajeController.addSensor);
 
 
