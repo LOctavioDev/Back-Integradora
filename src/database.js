@@ -2,7 +2,7 @@ import chalk from "chalk";
 import mongoose from "mongoose";
 
 mongoose
-  .connect("mongodb://localhost:22062/integradora")
+  .connect("mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority")
   .then(() => {
     console.log(
       chalk.green(
