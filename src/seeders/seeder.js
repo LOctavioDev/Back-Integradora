@@ -150,7 +150,7 @@ async function seedData() {
                     ],
                     "location": "Cocina",
                     "status": "Disponible",
-                    "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                    // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
                     "owner": "TurtleFS",
                     "actions": [
                         {
@@ -310,7 +310,7 @@ async function seedData() {
             ],
             "location": "Baño 1",
             "status": "Disponible",
-            "initialDate": {"$date": "2024-03-14T10:50:00Z"},
+            // "initialDate": {"$date": "2024-03-14T10:50:00Z"},
             "owner": "JODomotics",
             "readings": [{
                 "name": "Deteccion de Distancia",
@@ -346,7 +346,7 @@ async function seedData() {
             ],
             "location": "Baño 1",
             "status": "Disponible",
-            "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+            // "initialDate": {"$date": "2024-04-18T09:00:00Z"},
             "owner": "JODomotics",
             "readings": [{
                 "name": "Deteccion de Luz",
@@ -381,7 +381,7 @@ async function seedData() {
             ],
             "location": "Baño 1",
             "status": "Disponible",
-            "initialDate": {"$date": "2024-04-17T09:11:00Z"},
+            // "initialDate": {"$date": "2024-04-17T09:11:00Z"},
             "owner": "JODomotics",
             "readings": [{
                 "name": "Deteccion de Presencia",
@@ -416,7 +416,7 @@ async function seedData() {
             ],
             "location" : "Baño 1",
             "status" : "Disponible",
-            "initialDate" : {"$date":"2024-03-01T08:00:00.000+0000"},
+            // "initialDate" : {"$date":"2024-03-01T08:00:00.000+0000"},
             "owner" : "JODomotics",
             "actions": [
                 {
@@ -450,7 +450,7 @@ async function seedData() {
             ],
             "location": "Baño 1",
             "status": "Disponible",
-            "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+            // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
             "owner": "JODomotics",
             "actions": [
                 {
@@ -580,7 +580,7 @@ async function seedData() {
                 ],
                 "location": "Baño 2",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-03-14T10:50:00Z"},
+                // "initialDate": {"$date": "2024-03-14T10:50:00Z"},
                 "owner": "Automa-Tics",
                 "readings": [{
                     "name": "Deteccion de Distancia",
@@ -616,7 +616,7 @@ async function seedData() {
                 ],
                 "location": "Baño 2",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                // "initialDate": {"$date": "2024-04-18T09:00:00Z"},
                 "owner": "Automa-Tics",
                 "readings": [{
                     "name": "Deteccion de Luz",
@@ -651,7 +651,7 @@ async function seedData() {
                 ],
                 "location": "Baño 2",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-04-17T09:11:00Z"},
+                // "initialDate": {"$date": "2024-04-17T09:11:00Z"},
                 "owner": "Automa-Tics",
                 "readings": [{
                     "name": "Deteccion de Presencia",
@@ -686,7 +686,7 @@ async function seedData() {
                 ],
                 "location" : "Baño 2",
                 "status" : "Disponible",
-                "initialDate" : {"$date":"2024-03-01T08:00:00.000+0000"},
+                 // "initialDate" : {"$date":"2024-03-01T08:00:00.000+0000"},
                 "owner" : "Automa-Tics",
                 "actions": [
                     {
@@ -720,7 +720,7 @@ async function seedData() {
                 ],
                 "location": "Baño 2",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
                 "owner": "Automa-Tics",
                 "actions": [
                     {
@@ -849,7 +849,7 @@ async function seedData() {
                     ],
                     "location": "Garaje",
                     "status": "Disponible",
-                    "initialDate": {"$date": "2024-04-17T09:11:00Z"},
+                    // "initialDate": {"$date": "2024-04-17T09:11:00Z"},
                     "owner": "BYTECRAFTERS",
                     "readings": [{
                         "name": "Deteccion de Presencia",
@@ -879,7 +879,7 @@ async function seedData() {
                 ],
                 "location": "Garaje",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-03-14T10:50:00Z"},
+                // "initialDate": {"$date": "2024-03-14T10:50:00Z"},
                 "owner": "BYTECRAFTERS",
                 "readings": [{
                     "name": "Deteccion de Distancia",
@@ -915,7 +915,7 @@ async function seedData() {
                 ],
                 "location": "Garaje",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                // "initialDate": {"$date": "2024-04-18T09:00:00Z"},
                 "owner": "BYTECRAFTERS",
                 "readings": [{
                     "name": "Deteccion de Luz",
@@ -1042,7 +1042,7 @@ async function seedData() {
                 ],
                 "location": "Garaje",
                 "status": "Disponible",
-                "initialDate": { "$date": "2024-03-07T08:00:00Z" },
+                // "initialDate": { "$date": "2024-03-07T08:00:00Z" },
                 "owner": "BYTECRAFTERS",
                 "actions": [{
                     "name": "Buzzer",
@@ -1105,7 +1105,7 @@ async function seedData() {
                     ],
                     "location": "Garaje",
                     "status": "Disponible",
-                    "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                    // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
                     "owner": "BYTECRAFTERS",
                     "actions": [
                         {
@@ -1191,7 +1191,7 @@ async function seedData() {
                 ],
                 "location": "Sala",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                // "initialDate": {"$date": "2024-04-18T09:00:00Z"},
                 "owner": "SmartHouse",
                 "readings": [{
                     "name": "Deteccion de Luz",
@@ -1351,7 +1351,7 @@ async function seedData() {
                     ],
                     "location": "Sala",
                     "status": "Disponible",
-                    "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                    // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
                     "owner": "SmartHouse",
                     "actions": [
                         {
@@ -1437,7 +1437,7 @@ async function seedData() {
                 ],
                 "location": "Recámara 1",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                // "initialDate": {"$date": "2024-04-18T09:00:00Z"},
                 "owner": "MVC",
                 "readings": [{
                     "name": "Deteccion de Luz",
@@ -1475,7 +1475,7 @@ async function seedData() {
                 ],
                 "location": "Recámara 1",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
                 "owner": "MVC",
                 "actions": [
                     {
@@ -1684,7 +1684,7 @@ async function seedData() {
                 ],
                 "location": "Recámara 2",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                // "initialDate": {"$date": "2024-04-18T09:00:00Z"},
                 "owner": "Evangelistas",
                 "readings": [{
                     "name": "Deteccion de Luz",
@@ -1722,7 +1722,7 @@ async function seedData() {
                 ],
                 "location": "Recámara 2",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
                 "owner": "Evangelistas",
                 "actions": [
                     {
@@ -1931,7 +1931,7 @@ async function seedData() {
                 ],
                 "location": "Recámara 3",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                // "initialDate": {"$date": "2024-04-18T09:00:00Z"},
                 "owner": "JAE-Develops",
                 "readings": [{
                     "name": "Deteccion de Luz",
@@ -1969,7 +1969,7 @@ async function seedData() {
                 ],
                 "location": "Recámara 3",
                 "status": "Disponible",
-                "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                // "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
                 "owner": "JAE-Develops",
                 "actions": [
                     {
