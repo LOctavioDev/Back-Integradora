@@ -20,7 +20,7 @@ import { kitchen, bathroom1, bathroom2, room1, room2, room3,livingRoom, garaje }
 async function seedData() {
     try {
         // Kitchen
-        const kitchen = [
+        const kitchenData = [
             { 
                 //Sensor 1 - Gas
                 "type": "Sensor",
@@ -283,7 +283,7 @@ async function seedData() {
             }
         ]
 
-        await kitchen.insertMany(kitchen)
+        await kitchen.insertMany(kitchenData)
 
         // Bathroom1
         const bathroomOne = [
@@ -554,6 +554,276 @@ async function seedData() {
         ]
 
         await bathroom1.insertMany(bathroomOne)
+
+        // Bathroom2
+        const bathroomTwo = [
+            {
+                // Sensor 1 - Proximidad
+                "type": "Sensor",
+                "name": "Proximidad",
+                "brand": "Steren",
+                "model": "ARD-350",
+                "specifications": [
+                    {
+                        "name": "Rango de Distancia",
+                        "maxValue": 500,
+                        "minValue": 2,
+                        "measurementUnit": "CM",
+                        
+                    },
+                    {
+                        "name": "VCD",
+                        "maxValue": 5,
+                        "minValue": 3,
+                        "measurementUnit": "V"
+                    }
+                ],
+                "location": "Baño 2",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-03-14T10:50:00Z"},
+                "owner": "Automa-Tics",
+                "readings": [{
+                    "name": "Deteccion de Distancia",
+                    "reading": 76,
+                    "measurementUnit": "CM"
+                }]
+            },
+            {
+                // Sensor 2 - Fotoresistencia
+                "type": "Sensor",
+                "name": "Fotoresistencia",
+                "brand": "Genérica",
+                "model": "LDR5537",
+                "specifications": [
+                    {
+                        "name": "Rango de Luz",
+                        "maxValue": 50,
+                        "minValue": 18,
+                        "measurementUnit": "Lux"
+                    },
+                    {
+                        "name": "VCD",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "measurementUnit": "V"
+                    },
+                    {
+                        "name": "Intensidad",
+                        "maxValue": 1024,
+                        "minValue": 0,
+                        "measurementUnit": "Ohms"
+                    }
+                ],
+                "location": "Baño 2",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                "owner": "Automa-Tics",
+                "readings": [{
+                    "name": "Deteccion de Luz",
+                    "reading": 28,
+                    "measurementUnit": "Lux"
+                },
+                {
+                    "name": "Deteccion de Intensidad",
+                    "reading": 589,
+                    "measurementUnit": "Ohms"
+                }]
+            },
+            {
+            // Sensor 3 - Presencia
+                "type": "Sensor",
+                "name": "Presencia",
+                "brand": "Tecneu",
+                "model": "HC-SR01",
+                "specifications": [
+                    {
+                        "name": "Rango de Distancia",
+                        "maxValue": 700,
+                        "minValue": 250,
+                        "measurementUnit": "CM"
+                    },
+                    {
+                        "name": "VCD",
+                        "maxValue": 12,
+                        "minValue": 5,
+                        "measurementUnit": "V"
+                    }
+                ],
+                "location": "Baño 2",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-04-17T09:11:00Z"},
+                "owner": "Automa-Tics",
+                "readings": [{
+                    "name": "Deteccion de Presencia",
+                    "status": true
+                }]
+            },
+            {
+                // Actuador 1 - Bomba de Agua
+                "type" : "Actuador",
+                "name": "Bomba de Agua",
+                "brand" : "DIP",
+                "model" : "MLM602838223",
+                "specifications" : [
+                    {
+                        "name" : "VCD",
+                        "minValue" : 2.5,
+                        "maxValue" : 6.0,
+                        "units" : "V"
+                    },
+                    {
+                        "name" : "Corriente",
+                        "minValue" : 130.0,
+                        "maxValue" : 220.0,
+                        "units" : "mA"
+                    },
+                    {
+                        "name" : "Diámetro del Tubo de Salida",
+                        "external" : 7.5,
+                        "internal" : 5.0,
+                        "units" : "mm"
+                    }
+                ],
+                "location" : "Baño 2",
+                "status" : "Disponible",
+                "initialDate" : {"$date":"2024-03-01T08:00:00.000+0000"},
+                "owner" : "Automa-Tics",
+                "actions": [
+                    {
+                        "name": "Bomba de agua",
+                        "status": true
+                    }
+                ]
+            },
+            {
+            // Actuador 2 - Luz Interior
+            "type": "Actuador",        
+            "name": "Luz Interior",
+                "brand": "Voltech",
+                "model": "POPL-12",
+                "specifications": [
+                    {
+                        "name": "Soporte de tensión",
+                        "value": 250,
+                        "measurementUnits": "V"
+                    },
+                    {
+                        "name": "VCD",
+                        "value": 4,
+                        "measurementUnits": "A"
+                    },
+                    {
+                        "name": "Diámetro del Socket",
+                        "value": 2 ,
+                        "measurementUnits": "IN"
+                    }
+                ],
+                "location": "Baño 2",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                "owner": "Automa-Tics",
+                "actions": [
+                    {
+                        "name": "Luz interior",
+                        "status": true
+                    }
+                ]
+            },	
+            { 
+                //Actuador 3 - Luz Exterior
+                "type": "Actuador",
+                "identifier": "A1CTF",
+                "name": "Luz Exterior",
+                "brand": "Radox",
+                "model": "LED-5mm",
+                "specificactions": [
+                    {
+                        "name": "Corriente Máxima de Pico",
+                        "maxValue": 15,
+                        "minValue": 0,
+                        "meausurementUnit": "mA",
+                    },
+                    {
+                        "name": "Voltaje Nominal de Operación",
+                        "maxValue": 2.1,
+                        "minValue": 2.1,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Baño 2",
+                "status": "Disponible",
+                "owner": "Automa-Tics",
+                "actions": [
+                    {
+                        "name": "Luz Exterior",
+                        "status": true
+                    }
+                ],
+            }, 
+            {
+                // Actuador 4 - Puerta
+                "type": "Actuador",
+                "identifier": "A4CTF",
+                "name": "Puerta",
+                "brand": "ServoTech",
+                "model": "SG90",
+                "specificactions": [
+                    {
+                        "name": "Ángulo Máximo",
+                        "maxValue": 180,
+                        "minValue": 0,
+                        "meausurementUnit": "°",
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Baño 2",
+                "status": "Disponible",
+                "owner": "Automa-Tics",
+                "actions": [{
+                    "name": "Puerta",
+                    "value": 48,
+                    "meausurementUnit": "°"
+                }]
+            },
+            {
+                // Actuador 5 - Ventana Sencilla
+                "type": "Actuador",
+                "identifier": "A4CTF",
+                "name": "Ventana Sencilla",
+                "brand": "ServoTech",
+                "model": "SG90",
+                "specificactions": [
+                    {
+                        "name": "Ángulo Máximo",
+                        "maxValue": 180,
+                        "minValue": 0,
+                        "meausurementUnit": "°",
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Baño 2",
+                "status": "Disponible",
+                "owner": "Automa-Tics",
+                "actions": [{
+                    "name": "Ventana abierta",
+                    "value": 79,
+                    "meausurementUnit": "°"
+                }]
+    
+            }
+        ]
+    
+        await bathroom2.insertMany(bathroomTwo)
 
         // Garage 
         const garage = [
