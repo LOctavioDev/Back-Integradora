@@ -52,70 +52,70 @@ roomDao.getOneTemperature = async () => {
   
 roomDao.getTwoTemperature = async () => {
    return await room2.aggregate([
-      {
-        $match: {
-          "type": "sensor",
-          "readings.name": { $in: ["Humedad", "Temperatura"] }
-        }
-      },
-      {
-        $sort: { "startsAt": -1 }
-      },
-      {
-        $limit: 1
-      },
-      {
-        $project: {
-          "_id": 0,
-          "humedad": {
-            $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Humedad"] } }
-          },
-          "temperatura": {
-            $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Temperatura"] } }
-          }
-        }
-      },
-      {
-        $project: {
-          "Humedad": { $arrayElemAt: ["$humedad.value", 0] },
-          "Temperatura": { $arrayElemAt: ["$temperatura.value", 0] }
+    {
+      $match: {
+        "type": { $regex: /sensor/i }, // Utilizamos $regex para buscar "sensor"
+        "readings.name": { $regex: /Humedad|Temperatura/i } // Utilizamos $regex para buscar "Humedad" o "Temperatura"
+      }
+    },
+    {
+      $sort: { "startsAt": -1 }
+    },
+    {
+      $limit: 1
+    },
+    {
+      $project: {
+        "_id": 0,
+        "humedad": {
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Humedad/i } } }
+        },
+        "temperatura": {
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Temperatura/i } } }
         }
       }
-    ]);
+    },
+    {
+      $project: {
+        "Humedad": { $arrayElemAt: ["$humedad.value", 0] },
+        "Temperatura": { $arrayElemAt: ["$temperatura.value", 0] }
+      }
+    }
+  ]);
 }
 
 roomDao.getThreeTemperature = async () => {
    return await room3.aggregate([
-      {
-        $match: {
-          "type": "sensor",
-          "readings.name": { $in: ["Humedad", "Temperatura"] }
-        }
-      },
-      {
-        $sort: { "startsAt": -1 }
-      },
-      {
-        $limit: 1
-      },
-      {
-        $project: {
-          "_id": 0,
-          "humedad": {
-            $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Humedad"] } }
-          },
-          "temperatura": {
-            $filter: { input: "$readings", cond: { $eq: ["$$this.name", "Temperatura"] } }
-          }
-        }
-      },
-      {
-        $project: {
-          "Humedad": { $arrayElemAt: ["$humedad.value", 0] },
-          "Temperatura": { $arrayElemAt: ["$temperatura.value", 0] }
+    {
+      $match: {
+        "type": { $regex: /sensor/i }, // Utilizamos $regex para buscar "sensor"
+        "readings.name": { $regex: /Humedad|Temperatura/i } // Utilizamos $regex para buscar "Humedad" o "Temperatura"
+      }
+    },
+    {
+      $sort: { "startsAt": -1 }
+    },
+    {
+      $limit: 1
+    },
+    {
+      $project: {
+        "_id": 0,
+        "humedad": {
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Humedad/i } } }
+        },
+        "temperatura": {
+          $filter: { input: "$readings", cond: { $regexMatch: { input: "$$this.name", regex: /Temperatura/i } } }
         }
       }
-    ]);
+    },
+    {
+      $project: {
+        "Humedad": { $arrayElemAt: ["$humedad.value", 0] },
+        "Temperatura": { $arrayElemAt: ["$temperatura.value", 0] }
+      }
+    }
+  ]);
 }
 
 roomDao.deleteData = async () => {

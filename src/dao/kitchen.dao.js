@@ -80,7 +80,7 @@ kitchenDao.getExternalLight = async () => {
           $match: {
               "type": { $regex: /Actuador/i }, // Utilizamos $regex para buscar "Actuador"
               "location": "Cocina",
-              "actions.name": { $regex: /Luz apagada|Luz encendida/i } // Utilizamos $regex para buscar "Luz apagada" o "Luz encendida"
+              "actions.name": { $regex: /Luz Exterior/i } // Utilizamos $regex para buscar "Luz apagada" o "Luz encendida"
           }
       },
       {
@@ -90,21 +90,10 @@ kitchenDao.getExternalLight = async () => {
           $limit: 1
       },
       {
-          $project: {
-              "_id": 0,
-              "Luz": {
-                  $arrayElemAt: [{
-                      $filter: { input: "$actions", cond: { $regexMatch: { input: "$$this.name", regex: /Luz\s(apagada|encendida)/i } } }
-                  }, 0]
-              }
-          }
-
-      },
-      {
-          $project: {
-              "isOn": "$Luz.value",
-
-          }
+        $project: {
+            "_id": 0,
+            "isOn": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
+        }
       }
   ]);
 }
@@ -116,7 +105,7 @@ kitchenDao.getInternalLight = async () => {
             "type": { $regex: /Actuador/i }, // Utilizamos $regex para buscar "Actuador"
             "location": "Cocina",
             "name":"Luz Interior",
-            "actions.name": { $regex: /Luz interior\s(apagada|encendida)/i } // Ajustamos la expresión regular para que coincida con "Luz interior apagada" o "Luz interior encendida"
+            "actions.name": { $regex: /Luz interior/i } // Ajustamos la expresión regular para que coincida con "Luz interior apagada" o "Luz interior encendida"
         }
     },
     {
@@ -128,18 +117,7 @@ kitchenDao.getInternalLight = async () => {
     {
         $project: {
             "_id": 0,
-            "Luz": {
-                $arrayElemAt: [{
-                    $filter: { input: "$actions", cond: { $regexMatch: { input: "$$this.name", regex: /Luz interior\s(apagada|encendida)/i } } }
-                }, 0]
-            }
-        }
-
-    },
-    {
-        $project: {
-            "isOn": "$Luz.value",
-
+            "isOn": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
         }
     }
 ]);
@@ -151,7 +129,7 @@ kitchenDao.getFan = async () => {
         $match: {
             "type": { $regex: /Actuador/i },
             "name": "Ventilador",
-            "actions.name": { $regex: /Ventilador encendido|Ventilador apagado/i }
+            "actions.name": { $regex: /Ventilador/i }
         }
     },
     {
@@ -163,7 +141,7 @@ kitchenDao.getFan = async () => {
     {
         $project: {
             "_id": 0,
-            "isOn": { $arrayElemAt: ["$actions.value", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
+            "isOn": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
         }
     }
   ]);
@@ -175,7 +153,7 @@ kitchenDao.getDoor = async () => {
         $match: {
             "type": "Actuador",
             "name": "Puerta",
-            "actions.name": { $regex: /Puerta abierta|Puerta cerrada/i }
+            "actions.name": { $regex: /Puerta/i }
         }
     },
     {
@@ -194,27 +172,28 @@ kitchenDao.getDoor = async () => {
 }
 
 kitchenDao.getWindow = async () => {
-  return await kitchen.aggregate([
-    {
-        $match: {
-            "type": "Actuador",
-            "name": "Ventana Sencilla",
-            "actions.name": { $regex: /Ventana cerrada|Ventana abierta/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
-        }
-    }
-  ]);
-}
+    return await kitchen.aggregate([
+      {
+          $match: {
+              "type": "Actuador",
+              "name": "Ventana Sencilla",
+              "actions.name": { $regex: /Ventana/i } // Puedes ajustar el regex según necesites
+          }
+      },
+      {
+          $sort: { "startsAt": -1 }
+      },
+      {
+          $limit: 1
+      },
+      {
+          $project: {
+              "_id": 0,
+              "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor del campo "status" de la acción
+          }
+      }
+    ]);
+  }
+  
 
 export default kitchenDao;
