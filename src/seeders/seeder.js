@@ -1341,6 +1341,500 @@ async function seedData() {
 
         await room1.insertMany(roomOne)
 
+        // room 2
+        const roomTwo = [
+            { 
+                //Sensor 1 - Temperatura y Humedad
+                "type": "Sensor",
+                "identifier": "S2CTF",
+                "name": "Temperatura y humedad",
+                "brand": "Rantec",
+                "model": "DHT11",
+                "specificactions": [
+                    {
+                        "name": "Rango de Temperatura",
+                        "minValue": 0,
+                        "maxValue": 50,
+                        "meausurementUnit": "°C"
+                    },
+                    {
+                        "name": "Rango de Humedad",
+                        "minValue": 20,
+                        "maxValue": 90,
+                        "meausurementUnit": "% HR"
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V"
+                    }
+                ],
+                "location": "Recámara 2",
+                "status": "Disponible",
+                "owner": "Evangelistas",
+                "readings": [
+                    {
+                        "name": "Deteccion de Temperatura",
+                        "value": 25,
+                        "measuramentUnit": "°C"
+                    },
+                    {
+                        "name": "Deteccion de Humedad",
+                        "value": 12,
+                        "measuramentUnit": "% HR"
+                    }
+                ]
+            },
+            {
+                // Sensor 2 - Fotoresistencia
+                "type": "Sensor",
+                "name": "Fotoresistencia",
+                "brand": "Genérica",
+                "model": "LDR5537",
+                "specifications": [
+                    {
+                        "name": "Rango de Luz",
+                        "maxValue": 50,
+                        "minValue": 18,
+                        "measurementUnit": "Lux"
+                    },
+                    {
+                        "name": "VCD",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "measurementUnit": "V"
+                    },
+                    {
+                        "name": "Intensidad",
+                        "maxValue": 1024,
+                        "minValue": 0,
+                        "measurementUnit": "Ohms"
+                    }
+                ],
+                "location": "Recámara 2",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                "owner": "Evangelistas",
+                "readings": [{
+                    "name": "Deteccion de Luz",
+                    "reading": 29,
+                    "measurementUnit": "Lux"
+                },
+                {
+                    "name": "Deteccion de Intensidad",
+                    "reading": 666,
+                    "measurementUnit": "Ohms"
+                }]
+            },
+            {
+                // Actuador 1 - Luz Interior
+                "type": "Actuador",        
+                "name": "Luz Interior",
+                "brand": "Voltech",
+                "model": "POPL-12",
+                "specifications": [
+                    {
+                        "name": "Soporte de tensión",
+                        "value": 250,
+                        "measurementUnits": "V"
+                    },
+                    {
+                        "name": "VCD",
+                        "value": 4,
+                        "measurementUnits": "A"
+                    },
+                    {
+                        "name": "Diámetro del Socket",
+                        "value": 2 ,
+                        "measurementUnits": "IN"
+                    }
+                ],
+                "location": "Recámara 2",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                "owner": "Evangelistas",
+                "actions": [
+                    {
+                        "name": "Luz interior",
+                        "status": true
+                    }
+                ]
+            },	
+            { 
+                //Actuador 2 - Luz Exterior
+                "type": "Actuador",
+                "identifier": "A1CTF",
+                "name": "Luz Exterior",
+                "brand": "Radox",
+                "model": "LED-5mm",
+                "specificactions": [
+                    {
+                        "name": "Corriente Máxima de Pico",
+                        "maxValue": 15,
+                        "minValue": 0,
+                        "meausurementUnit": "mA",
+                    },
+                    {
+                        "name": "Voltaje Nominal de Operación",
+                        "maxValue": 2.1,
+                        "minValue": 2.1,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Recámara 2",
+                "status": "Disponible",
+                "owner": "Evangelistas",
+                "actions": [
+                    {
+                        "name": "Luz Exterior",
+                        "status": true
+                    }
+                ],
+            }, 
+            {
+                // Actuador 3 - Puerta
+                "type": "Actuador",
+                "identifier": "A4CTF",
+                "name": "Puerta",
+                "brand": "ServoTech",
+                "model": "SG90",
+                "specificactions": [
+                    {
+                        "name": "Ángulo Máximo",
+                        "maxValue": 180,
+                        "minValue": 0,
+                        "meausurementUnit": "°",
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Recámara 2",
+                "status": "Disponible",
+                "owner": "Evangelistas",
+                "actions": [{
+                    "name": "Puerta",
+                    "value": 55,
+                    "meausurementUnit": "°"
+                }]
+            },
+        
+            {
+                // Actuador 4 - Ventana Sencilla
+                "type": "Actuador",
+                "identifier": "A4CTF",
+                "name": "Ventana Sencilla",
+                "brand": "ServoTech",
+                "model": "SG90",
+                "specificactions": [
+                    {
+                        "name": "Ángulo Máximo",
+                        "maxValue": 180,
+                        "minValue": 0,
+                        "meausurementUnit": "°",
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Recámara 2",
+                "status": "Disponible",
+                "owner": "Evangelistas",
+                "actions": [{
+                    "name": "Ventana abierta",
+                    "value": 70,
+                    "meausurementUnit": "°"
+                }]
+
+            }, 
+            {
+                // Actuador 5 - Ventilador
+                "type": "Actuador",
+                "identifier": "A3CTF",
+                "name": "Ventilador",
+                "brand": "Steren",
+                "model": "VN4-012P",
+                "specifications": [
+                    {
+                        "name": "Revoluciones por minuto",
+                        "value": 2700,
+                        "units": "RPM"
+                    },
+                    {
+                        "name": "VCD",
+                        "value": 12,
+                        "units": "V"
+                    }
+                ],
+                "location": "Recámara 2",
+                "status": "Disponible",
+                "owner": "Evangelistas",
+                "actions": [
+                    {
+                        "name": "Ventilador",
+                        "status": true
+                    }
+                ]
+
+            }
+        ]
+
+        await room2.insertMany(roomTwo)
+
+        // room 3
+        const roomThree = [
+            { 
+                //Sensor 1 - Temperatura y Humedad
+                "type": "Sensor",
+                "identifier": "S2CTF",
+                "name": "Temperatura y humedad",
+                "brand": "Rantec",
+                "model": "DHT11",
+                "specificactions": [
+                    {
+                        "name": "Rango de Temperatura",
+                        "minValue": 0,
+                        "maxValue": 50,
+                        "meausurementUnit": "°C"
+                    },
+                    {
+                        "name": "Rango de Humedad",
+                        "minValue": 20,
+                        "maxValue": 90,
+                        "meausurementUnit": "% HR"
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V"
+                    }
+                ],
+                "location": "Recámara 3",
+                "status": "Disponible",
+                "owner": "JAE-Develops",
+                "readings": [
+                    {
+                        "name": "Deteccion de Temperatura",
+                        "value": 30,
+                        "measuramentUnit": "°C"
+                    },
+                    {
+                        "name": "Deteccion de Humedad",
+                        "value": 17,
+                        "measuramentUnit": "% HR"
+                    }
+                ]
+            },
+            {
+                // Sensor 2 - Fotoresistencia
+                "type": "Sensor",
+                "name": "Fotoresistencia",
+                "brand": "Genérica",
+                "model": "LDR5537",
+                "specifications": [
+                    {
+                        "name": "Rango de Luz",
+                        "maxValue": 50,
+                        "minValue": 18,
+                        "measurementUnit": "Lux"
+                    },
+                    {
+                        "name": "VCD",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "measurementUnit": "V"
+                    },
+                    {
+                        "name": "Intensidad",
+                        "maxValue": 1024,
+                        "minValue": 0,
+                        "measurementUnit": "Ohms"
+                    }
+                ],
+                "location": "Recámara 3",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-04-18T09:00:00Z"},
+                "owner": "JAE-Develops",
+                "readings": [{
+                    "name": "Deteccion de Luz",
+                    "reading": 35,
+                    "measurementUnit": "Lux"
+                },
+                {
+                    "name": "Deteccion de Intensidad",
+                    "reading": 679,
+                    "measurementUnit": "Ohms"
+                }]
+            },
+            {
+                // Actuador 1 - Luz Interior
+                "type": "Actuador",        
+                "name": "Luz Interior",
+                "brand": "Voltech",
+                "model": "POPL-12",
+                "specifications": [
+                    {
+                        "name": "Soporte de tensión",
+                        "value": 250,
+                        "measurementUnits": "V"
+                    },
+                    {
+                        "name": "VCD",
+                        "value": 4,
+                        "measurementUnits": "A"
+                    },
+                    {
+                        "name": "Diámetro del Socket",
+                        "value": 2 ,
+                        "measurementUnits": "IN"
+                    }
+                ],
+                "location": "Recámara 3",
+                "status": "Disponible",
+                "initialDate": {"$date": "2024-03-01T08:00:00.000+0000"},
+                "owner": "JAE-Develops",
+                "actions": [
+                    {
+                        "name": "Luz interior",
+                        "status": true
+                    }
+                ]
+            },	
+            { 
+                //Actuador 2 - Luz Exterior
+                "type": "Actuador",
+                "identifier": "A1CTF",
+                "name": "Luz Exterior",
+                "brand": "Radox",
+                "model": "LED-5mm",
+                "specificactions": [
+                    {
+                        "name": "Corriente Máxima de Pico",
+                        "maxValue": 15,
+                        "minValue": 0,
+                        "meausurementUnit": "mA",
+                    },
+                    {
+                        "name": "Voltaje Nominal de Operación",
+                        "maxValue": 2.1,
+                        "minValue": 2.1,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Recámara 3",
+                "status": "Disponible",
+                "owner": "JAE-Develops",
+                "actions": [
+                    {
+                        "name": "Luz Exterior",
+                        "status": true
+                    }
+                ],
+            }, 
+            {
+                // Actuador 3 - Puerta
+                "type": "Actuador",
+                "identifier": "A4CTF",
+                "name": "Puerta",
+                "brand": "ServoTech",
+                "model": "SG90",
+                "specificactions": [
+                    {
+                        "name": "Ángulo Máximo",
+                        "maxValue": 180,
+                        "minValue": 0,
+                        "meausurementUnit": "°",
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Recámara 3",
+                "status": "Disponible",
+                "owner": "JAE-Develops",
+                "actions": [{
+                    "name": "Puerta",
+                    "value": 67,
+                    "meausurementUnit": "°"
+                }]
+            },
+        
+            {
+                // Actuador 4 - Ventana Sencilla
+                "type": "Actuador",
+                "identifier": "A4CTF",
+                "name": "Ventana Sencilla",
+                "brand": "ServoTech",
+                "model": "SG90",
+                "specificactions": [
+                    {
+                        "name": "Ángulo Máximo",
+                        "maxValue": 180,
+                        "minValue": 0,
+                        "meausurementUnit": "°",
+                    },
+                    {
+                        "name": "Alimentación de Energía",
+                        "maxValue": 5,
+                        "minValue": 3.3,
+                        "meausurementUnit": "V",
+                    },
+                ],
+                "location": "Recámara 3",
+                "status": "Disponible",
+                "owner": "JAE-Develops",
+                "actions": [{
+                    "name": "Ventana abierta",
+                    "value": 70,
+                    "meausurementUnit": "°"
+                }]
+
+            }, 
+            {
+                // Actuador 5 - Ventilador
+                "type": "Actuador",
+                "identifier": "A3CTF",
+                "name": "Ventilador",
+                "brand": "Steren",
+                "model": "VN4-012P",
+                "specifications": [
+                    {
+                        "name": "Revoluciones por minuto",
+                        "value": 2700,
+                        "units": "RPM"
+                    },
+                    {
+                        "name": "VCD",
+                        "value": 12,
+                        "units": "V"
+                    }
+                ],
+                "location": "Recámara 3",
+                "status": "Disponible",
+                "owner": "JAE-Develops",
+                "actions": [
+                    {
+                        "name": "Ventilador",
+                        "status": true
+                    }
+                ]
+
+            }
+        ]
+
+        await room3.insertMany(roomThree)
+
         console.log('Data seeded')
     } catch (error) {
         console.log(error)
