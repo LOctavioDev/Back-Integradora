@@ -75,7 +75,14 @@ router.get('/kitchen/external-light', kitchenController.getExternalLight)
 // BAÑO 2
 // RECAMARA 1
 // RECAMARA 2
-// RECAMARA 3
+// RECAMARA 
+
+//luz exterior
+router.get('/room1/external-light', roomController.getExternalLightOne)
+router.get('/room2/external-light', roomController.getExternalLightTwo)
+router.get('/room3/external-light', roomController.getExternalLightThree)
+
+
 
 
 
