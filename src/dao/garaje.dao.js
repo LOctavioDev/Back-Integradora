@@ -128,5 +128,25 @@ garajeDao.getWindow = async () => {
           ]);
     }
 
+    garajeDao.getGate = async () => {
+        try {
+            // Buscar los últimos documentos insertados para ambos servomotores en la base de datos
+            const [portonIzquierdo, portonDerecho] = await Promise.all([
+                garaje.findOne({ name: 'Servomotor Porton Izquierdo' }).sort({ _id: -1 }),
+                garaje.findOne({ name: 'Servomotor Porton Derecho' }).sort({ _id: -1 })
+            ]);
+    
+            // Verificar el estado de cada portón y devolver el resultado en formato JSON
+            const gateState = {
+                leftGate: portonIzquierdo.actions[0].status ? 'Abierto' : 'Cerrado',
+                rightGate: portonDerecho.actions[0].status ? 'Abierto' : 'Cerrado'
+            };
+    
+            return gateState;
+        } catch (error) {
+            console.error('Error al obtener el estado de los portones:', error);
+            throw error;
+        }
+    }
 
 export default garajeDao;

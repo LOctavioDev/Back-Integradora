@@ -52,7 +52,7 @@ router.get('/bathroom2/door', bathroomController.getDoorTwo)
 
 // VENTANAS
 router.get('/bathroom1/window', bathroomController.getWindowOne)
-router.get('/bathroom1/window', bathroomController.getWindowTwo)
+router.get('/bathroom2/window', bathroomController.getWindowTwo)
 router.get('/livingroom/window', livingRoomController.getWindow)
 router.get('/room1/window', roomController.getWindowOne)
 router.get('/room2/window', roomController.getWindowTwo)
@@ -82,7 +82,7 @@ router.get('/room1/external-light', roomController.getExternalLightOne)
 router.get('/room2/external-light', roomController.getExternalLightTwo)
 router.get('/room3/external-light', roomController.getExternalLightThree)
 router.get('/garaje/distance', garajeController.getDistance)
-
+router.get('/garaje/gate', garajeController.getGate)
 
 
 
