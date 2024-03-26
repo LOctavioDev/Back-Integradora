@@ -248,49 +248,49 @@ roomDao.getInternalLightOne = async () => {
 roomDao.getDoorOne = async () => {
   return await room1.aggregate([
     {
-        $match: {
-            "type": "Actuador",
-            "name": "Puerta",
-            "actions.name": { $regex: /Puerta abierta|Puerta cerrada/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
-        }
-    }
-  ]);
+      $match: {
+          "type": "Actuador",
+          "name": "Puerta",
+          "actions.name": { $regex: /Puerta/i }
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
+      }
+  }
+]);
 }
 
 roomDao.getWindowOne = async () => {
   return await room1.aggregate([
     {
-        $match: {
-            "type": "Actuador",
-            "name": "Ventana Sencilla",
-            "actions.name": { $regex: /Ventana cerrada|Ventana abierta/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
-        }
-    }
-  ]);
+      $match: {
+          "type": "Actuador",
+          "name": "Ventana Sencilla",
+          "actions.name": { $regex: /Ventana/i } // Puedes ajustar el regex según necesites
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor del campo "status" de la acción
+      }
+  }
+]);
 }
 
 
@@ -345,53 +345,50 @@ roomDao.getFanTwo = async () => {
 roomDao.getDoorTwo = async () => {
   return await room2.aggregate([
     {
-        $match: {
-            "type": "Actuador",
-            "name": "Puerta",
-            "actions.name": { $regex: /Puerta abierta|Puerta cerrada/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
-        }
-    }
-  ]);
+      $match: {
+          "type": "Actuador",
+          "name": "Puerta",
+          "actions.name": { $regex: /Puerta/i }
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
+      }
+  }
+]);
 }
 
 roomDao.getWindowTwo = async () => {
   return await room2.aggregate([
     {
-        $match: {
-            "type": "Actuador",
-            "name": "Ventana Sencilla",
-            "actions.name": { $regex: /Ventana cerrada|Ventana abierta/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
-        }
-    }
-  ]);
+      $match: {
+          "type": "Actuador",
+          "name": "Ventana Sencilla",
+          "actions.name": { $regex: /Ventana/i } // Puedes ajustar el regex según necesites
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor del campo "status" de la acción
+      }
+  }
+]);
 }
-
-// 
-
 
 roomDao.getInternalLightThree = async () => {
   return await room3.aggregate([
@@ -444,49 +441,48 @@ roomDao.getFanThree = async () => {
 roomDao.getDoorThree = async () => {
   return await room3.aggregate([
     {
-        $match: {
-            "type": "Actuador",
-            "name": "Puerta",
-            "actions.name": { $regex: /Puerta abierta|Puerta cerrada/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
-        }
-    }
-  ]);
+      $match: {
+          "type": "Actuador",
+          "name": "Puerta",
+          "actions.name": { $regex: /Puerta/i }
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
+      }
+  }
+]);
 }
 
 roomDao.getWindowThree = async () => {
   return await room3.aggregate([
     {
-        $match: {
-            "type": "Actuador",
-            "name": "Ventana Sencilla",
-            "actions.name": { $regex: /Ventana cerrada|Ventana abierta/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Corrección aquí, proyectamos el valor de la acción "Puerta cerrada"
-        }
-    }
-  ]);
+      $match: {
+          "type": "Actuador",
+          "name": "Ventana Sencilla",
+          "actions.name": { $regex: /Ventana/i } // Puedes ajustar el regex según necesites
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOpened": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor del campo "status" de la acción
+      }
+  }
+]);
 }
-
 export default roomDao;
