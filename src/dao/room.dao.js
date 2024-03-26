@@ -321,25 +321,25 @@ roomDao.getInternalLightTwo = async () => {
 roomDao.getFanTwo = async () => {
   return await room2.aggregate([
     {
-        $match: {
-            "type": { $regex: /Actuador/i },
-            "name": "Ventilador",
-            "actions.name": { $regex: /Ventilador encendido|Ventilador apagado/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOn": { $arrayElemAt: ["$actions.value", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
-        }
-    }
-  ]);
+      $match: {
+          "type": { $regex: /Actuador/i },
+          "name": "Ventilador",
+          "actions.name": { $regex: /Ventilador/i }
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOn": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
+      }
+  }
+]);
 }
 
 roomDao.getDoorTwo = async () => {
@@ -417,27 +417,26 @@ roomDao.getInternalLightThree = async () => {
 roomDao.getFanThree = async () => {
   return await room3.aggregate([
     {
-        $match: {
-            "type": { $regex: /Actuador/i },
-            "name": "Ventilador",
-            "actions.name": { $regex: /Ventilador encendido|Ventilador apagado/i }
-        }
-    },
-    {
-        $sort: { "startsAt": -1 }
-    },
-    {
-        $limit: 1
-    },
-    {
-        $project: {
-            "_id": 0,
-            "isOn": { $arrayElemAt: ["$actions.value", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
-        }
-    }
-  ]);
+      $match: {
+          "type": { $regex: /Actuador/i },
+          "name": "Ventilador",
+          "actions.name": { $regex: /Ventilador/i }
+      }
+  },
+  {
+      $sort: { "startsAt": -1 }
+  },
+  {
+      $limit: 1
+  },
+  {
+      $project: {
+          "_id": 0,
+          "isOn": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
+      }
+  }
+]);
 }
-
 roomDao.getDoorThree = async () => {
   return await room3.aggregate([
     {
@@ -485,4 +484,29 @@ roomDao.getWindowThree = async () => {
   }
 ]);
 }
+
+roomDao.getFanOne = async () => {
+  return await room1.aggregate([
+  {
+    $match: {
+        "type": { $regex: /Actuador/i },
+        "name": "Ventilador",
+        "actions.name": { $regex: /Ventilador/i }
+    }
+},
+{
+    $sort: { "startsAt": -1 }
+},
+{
+    $limit: 1
+},
+{
+    $project: {
+        "_id": 0,
+        "isOn": { $arrayElemAt: ["$actions.status", 0] } // Proyectamos el valor de la acción "Ventilador encendido"
+    }
+}
+]);
+}
+
 export default roomDao;
