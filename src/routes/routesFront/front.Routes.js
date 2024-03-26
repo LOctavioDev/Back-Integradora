@@ -81,7 +81,7 @@ router.get('/kitchen/external-light', kitchenController.getExternalLight)
 router.get('/room1/external-light', roomController.getExternalLightOne)
 router.get('/room2/external-light', roomController.getExternalLightTwo)
 router.get('/room3/external-light', roomController.getExternalLightThree)
-
+router.get('/garaje/distance', garajeController.getDistance)
 
 
 
