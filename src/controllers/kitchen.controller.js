@@ -82,4 +82,14 @@ kitchenController.getWindow = async (req, res) => {
         }));
 }
 
+kitchenController.deleteData = async (req, res) => {
+    kitchenDao.deleteData
+        .then(data =>
+            res.status(200).json(data))
+        .catch(err => res.status(500).json({
+            success: false,
+            error: err.msg
+        }));
+}
+
 export default kitchenController;
