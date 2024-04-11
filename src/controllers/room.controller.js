@@ -195,4 +195,31 @@ roomController.getWindowThree = async (req, res) => {
         error : err.msg}));
 }
 
+roomController.deleteDataOne = async (req, res) => {
+    roomDao.deleteDataOne
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+roomController.deleteDataTwo = async (req, res) => {
+    roomDao.deleteDataTwo
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+roomController.deleteDataThree = async (req, res) => {
+    roomDao.deleteDataThree
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
 export default roomController;

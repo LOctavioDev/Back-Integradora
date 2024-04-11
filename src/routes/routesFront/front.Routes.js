@@ -91,5 +91,6 @@ router.get('/delete', generalController.deleteData)
 
 //BORAR DATOS INDIVIDUALES
 
+
 export default router;
 

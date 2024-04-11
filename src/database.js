@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import mongoose from "mongoose";
 
+// CONEXION A LA BASE DE DATOS
 mongoose
   .connect("mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority")
   .then(() => {

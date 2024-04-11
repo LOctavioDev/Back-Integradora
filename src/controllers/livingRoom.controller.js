@@ -62,4 +62,13 @@ livingRoomController.getDoor = async (req, res) => {
     }));
 }  
 
+livingRoomController.deleteData = async (req, res) => {
+    livingRoomDao.deleteData()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}
 export default livingRoomController;

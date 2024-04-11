@@ -140,6 +140,7 @@ livingRoomDao.getFan = async () => {
         }
       ]);
   }
-  
+
+
 
 export default livingRoomDao;

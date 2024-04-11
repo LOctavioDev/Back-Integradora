@@ -509,4 +509,18 @@ roomDao.getFanOne = async () => {
 ]);
 }
 
+roomDao.deleteDataOne = async () => {
+  await room1.deleteMany();
+  return true
+}
+ roomDao.deleteDataTwo = async () => {
+  await room2.deleteMany()
+  return true
+ }
+
+ roomDao.deleteDataThree = async () => {
+  await room2.deleteMany()
+  return true
+ }
+
 export default roomDao;
