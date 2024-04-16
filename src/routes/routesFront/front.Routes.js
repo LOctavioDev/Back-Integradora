@@ -13,10 +13,7 @@ const router = Router();
 router.get('/room1/temperature', roomController.getOneTemperature)
 router.get('/room2/temperature', roomController.getTwoTemperature)
 router.get('/room3/temperature', roomController.getThreeTemperature)
-
 router.get('/livingroom/temperature', livingRoomController.getTemperature)
-
-//GAS   
 
 
 //PRESENCIA
@@ -67,15 +64,6 @@ router.get('/kitchen/window', kitchenController.getWindow)
 router.get('/kitchen/internal-light', kitchenController.getInternalLight)
 router.get('/kitchen/door', kitchenController.getDoor)
 router.get('/kitchen/external-light', kitchenController.getExternalLight)
-//buzzer falta
-
-// SALA
-// GARAJE
-// BAÑO 1
-// BAÑO 2
-// RECAMARA 1
-// RECAMARA 2
-// RECAMARA 
 
 //luz exterior
 router.get('/room1/external-light', roomController.getExternalLightOne)
@@ -84,13 +72,26 @@ router.get('/room3/external-light', roomController.getExternalLightThree)
 router.get('/garaje/distance', garajeController.getDistance)
 router.get('/garaje/gate', garajeController.getGate)
 
+//TODOS LOS DATOS
+router.get('/kitchen', kitchenController.getAll)
+router.get('/bathroom1', bathroomController.getAllOne)
+router.get('/bathroom2', bathroomController.getAllTwo)
+router.get('/room1', roomController.getAllOne)
+router.get('/room2', roomController.getAllTwo)
+router.get('/room3', roomController.getAllThree)
+router.get('/livingroom', livingRoomController.getAll)
+router.get('/garaje', garajeController.getAll)
 
 
-//BORRAR DATOS -PROMISE-
-router.get('/delete', generalController.deleteData)
+// GRAFICA INDEPENDIENTES
+router.get('/chart/kitchen', kitchenController.getDataChart)
+router.get('/chart/livingroom', livingRoomController.getDataChart)
 
-//BORAR DATOS INDIVIDUALES
+//GRAFICA PROMEDIOS
+router.get('/kitchen/avg', kitchenController.getAverage)
+router.get('/livingroom/avg', livingRoomController.getAverage)
 
-
+//GRAFICA GENERAL
+router.get('/chart', generalController.getDataChart)
 export default router;
 

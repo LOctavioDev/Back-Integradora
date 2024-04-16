@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import moment from "moment-timezone"
 
 const sensorSchema = new Schema({
     type : String, 
@@ -21,13 +22,13 @@ const sensorSchema = new Schema({
     owner : String,
     startsAt: {
         type: Date,
-        default: Date.now,
-        required: false // Campo no obligatorio
+        default: () => moment().subtract(6, 'hours').toDate(), // Fecha actual ajustada a -6 horas
+        required: false
     },
     endsAt: {
         type: Date,
-        default: () => new Date(Date.now() + 5000), // Dependiendo del delay que se asignrara
-        required: false // Campo no obligatorio
+        default: () => moment().subtract(6, 'hours').add(5, 'seconds').toDate(), // Fecha actual ajustada a -6 horas + 5 segundos
+        required: false
     },
     readings :{
         type: Array,
@@ -55,4 +56,4 @@ const garaje = model('garaje', sensorSchema);
 
 // export default model('sensorModel', sensorSchema)
 
-export { room1, room2, room3, bathroom1, bathroom2, livingRoom, kitchen, garaje };
+export { room1, room2, room3, bathroom1, bathroom2, livingRoom, kitchen, garaje, sensorSchema };

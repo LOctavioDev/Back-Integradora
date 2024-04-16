@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "seeder":"node src/seeders/seeder.js"
+    "seeder": "node src/seeders/seeder.js",
+    "seedChart":"node src/seeders/chartSeed.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "axios": "^1.6.8",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "moment-timezone": "^0.5.45",
     "mongoose": "^8.1.3",
     "morgan": "^1.10.0",
     "swagger-jsdoc": "^6.2.8",

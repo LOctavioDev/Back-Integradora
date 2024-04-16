@@ -71,4 +71,35 @@ livingRoomController.deleteData = async (req, res) => {
         error: err.msg
     }));
 }
+
+livingRoomController.getAll = async (req, res) => {
+    livingRoomDao.getAll()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}
+
+livingRoomController.getDataChart = async (req, res) => {
+    livingRoomDao.getDataChart()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}
+
+livingRoomController.getAverage = async (req, res) => {
+    livingRoomDao.getAverageTemperature()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}
+
 export default livingRoomController;

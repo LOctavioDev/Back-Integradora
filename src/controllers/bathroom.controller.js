@@ -169,5 +169,23 @@ bathroomController.deleteDataTwo = async (req, res) => {
     }));
 }
 
+bathroomController.getAllOne = async (req, res) => {
+    bathroomDao.getAllOne()
+    .then(room1 => 
+        res.json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+} 
+
+bathroomController.getAllTwo = async (req, res) => {
+    bathroomDao.getAllTwo()
+    .then(room1 => 
+        res.json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+} 
+
 
 export default bathroomController;

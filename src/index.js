@@ -7,7 +7,7 @@ import swaggerSpec from './swaggerConfig.js';
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/', (req, res) => {
-  res.send('first');
+  res.json({"msj":'Bienvenido al API del proyecto iHouse desarrollado por el 5A DSM :)'});
 });
 
 const PORT = process.env.PORT || 3000;

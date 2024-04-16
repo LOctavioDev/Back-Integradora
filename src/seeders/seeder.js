@@ -2,7 +2,8 @@ import mongoose from "mongoose";
 import chalk from "chalk";
 // Conexion a base de datos en MongoDB
 mongoose
-  .connect("mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority")
+  //.connect("mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority")
+  .connect("mongodb://localhost:22062/iHouse-matricula")
   .then(() => {
     console.log(chalk.green("======================\n TRYING SEEDER\n======================"));
   })
@@ -57,7 +58,7 @@ async function seedData() {
         name: "Temperatura y humedad",
         brand: "Rantec",
         model: "DHT11",
-        specificactions: [
+        specifications: [
           {
             name: "Rango de Temperatura",
             minValue: 0,
@@ -100,7 +101,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -194,7 +195,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -227,7 +228,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -260,7 +261,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -476,7 +477,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -507,7 +508,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -540,7 +541,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -756,7 +757,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -787,7 +788,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -820,7 +821,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -965,7 +966,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -998,7 +999,7 @@ async function seedData() {
         name: "Servomotor Porton Izquierdo",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1031,7 +1032,7 @@ async function seedData() {
         name: "Servomotor Porton Derecho",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1096,7 +1097,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -1167,7 +1168,7 @@ async function seedData() {
         name: "Temperatura y humedad",
         brand: "Rantec",
         model: "DHT11",
-        specificactions: [
+        specifications: [
           {
             name: "Rango de Temperatura",
             minValue: 0,
@@ -1282,7 +1283,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1315,7 +1316,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1348,7 +1349,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -1419,7 +1420,7 @@ async function seedData() {
         name: "Temperatura y humedad",
         brand: "Rantec",
         model: "DHT11",
-        specificactions: [
+        specifications: [
           {
             name: "Rango de Temperatura",
             minValue: 0,
@@ -1539,7 +1540,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -1570,7 +1571,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1604,7 +1605,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1672,7 +1673,7 @@ async function seedData() {
         name: "Temperatura y humedad",
         brand: "Rantec",
         model: "DHT11",
-        specificactions: [
+        specifications: [
           {
             name: "Rango de Temperatura",
             minValue: 0,
@@ -1792,7 +1793,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -1823,7 +1824,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1857,7 +1858,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -1925,7 +1926,7 @@ async function seedData() {
         name: "Temperatura y humedad",
         brand: "Rantec",
         model: "DHT11",
-        specificactions: [
+        specifications: [
           {
             name: "Rango de Temperatura",
             minValue: 0,
@@ -2045,7 +2046,7 @@ async function seedData() {
         name: "Luz Exterior",
         brand: "Radox",
         model: "LED-5mm",
-        specificactions: [
+        specifications: [
           {
             name: "Corriente Máxima de Pico",
             maxValue: 15,
@@ -2076,7 +2077,7 @@ async function seedData() {
         name: "Puerta",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,
@@ -2110,7 +2111,7 @@ async function seedData() {
         name: "Ventana Sencilla",
         brand: "ServoTech",
         model: "SG90",
-        specificactions: [
+        specifications: [
           {
             name: "Ángulo Máximo",
             maxValue: 180,

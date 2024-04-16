@@ -2,14 +2,11 @@
 import { Router } from 'express';
 import kitchenController from '../controllers/kitchen.controller.js';
 import roomController from '../controllers/room.controller.js';
-import specificationsController from '../controllers/specifications.controller.js';
 import livingRoomController from '../controllers/livingRoom.controller.js';
 import bathroomController from '../controllers/bathroom.controller.js';
 import garajeController from '../controllers/garaje.controller.js';
+import generalController from '../controllers/general.controller.js';
 const router = Router();
-
-//Especificaciones de los sensores
-router.post('/specifications', specificationsController.insertOne);
 
 //Insert habitaciones
 router.post('/garaje', garajeController.addSensor)
@@ -30,5 +27,8 @@ router.delete('/delete/room2', roomController.deleteDataTwo)
 router.delete('/delete/room3', roomController.deleteDataThree)
 router.delete('/delete/livingroom', livingRoomController.deleteData)
 router.delete('/delete/kitchen', kitchenController.deleteData)
+router.delete('/delete', generalController.deleteData)
+
+
 
 export default router;

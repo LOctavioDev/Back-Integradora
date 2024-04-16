@@ -1,9 +1,10 @@
 import chalk from "chalk";
 import mongoose from "mongoose";
 
-// CONEXION A LA BASE DE DATOS
+// 
 mongoose
-  .connect("mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority")
+  //.connect("mongodb+srv://****") conecta tu cluster
+  .connect("mongodb://localhost:22062/iHouse-matricula")
   .then(() => {
     console.log(
       chalk.green(

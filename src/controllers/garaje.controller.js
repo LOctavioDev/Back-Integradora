@@ -83,4 +83,14 @@ garajeController.getGate = async (req, res) => {
     }));
 }
 
+garajeController.getAll = async (req, res) => {
+    garajeDao.getAll()
+    .then(room1 =>
+        res.status(200).json(room1))
+    .catch(err => res.status(500).json({
+        success: false,
+        error: err.msg
+    }));
+}
+
 export default garajeController;

@@ -419,4 +419,12 @@ bathroomDao.getWindowTwo = async () => {
   }
 ]);
 }
+
+bathroomDao.getAllOne = async (req, res) => {
+  return await bathroom1.find().limit(500);
+}
+bathroomDao.getAllTwo = async (req, res) => {
+  return await bathroom2.find().limit(500);
+}
+
 export default bathroomDao;
