@@ -3,7 +3,7 @@ import chalk from "chalk";
 import { kitchen } from "../models/sensor.model.js";
 
 mongoose
-    .connect("mongodb://localhost:22062/iHouse-matricula")
+    .connect("mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority")
     .then(() => {
         console.log(chalk.green("======================\n TRYING SEEDER\n======================"));
         seedData(); // Llamar a la función de inserción después de conectarse correctamente a la base de datos
@@ -63,7 +63,7 @@ async function seedData() {
             };
 
             // Insertar datos en la base de datos utilizando el modelo de mongoose
-            await kitchen.create(sensorData);
+            await kitchen.insertMany(sensorData);
 
             console.log(`Inserted record ${i + 1} with start date: ${startDate.toISOString()} and end date: ${endDate.toISOString()}`);
 
