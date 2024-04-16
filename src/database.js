@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 // 
 mongoose
   //.connect("mongodb+srv://****") conecta tu cluster
-  .connect("mongodb://localhost:22062/iHouse-matricula")
+  .connect("mongodb+srv://octadev:112020a@clusteroctavio.n8a1lsl.mongodb.net/integradora?retryWrites=true&w=majority")
   .then(() => {
     console.log(
       chalk.green(
