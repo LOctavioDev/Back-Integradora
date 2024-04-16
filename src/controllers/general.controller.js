@@ -45,14 +45,10 @@ generalController.getDataChart = async (req, res) => {
             const Model = conn.model(name, sensorSchema);
 
             // Contar los documentos en la colección actual
-            const totalRegistros = await Model.countDocuments({type:"Actuador"});
-            const totalSensores = await Model.countDocuments({type:"Sensor"});
+            const totalRegistros = await Model.countDocuments();
 
             // Almacenar el total de registros en el objeto de resultados
-            resultados[name] = {
-                "totalSensores":totalSensores,
-                "totalActuadores":totalRegistros
-            };
+            resultados[name] = totalRegistros;
         }
 
         // Cerrar la conexión a la base de datos
