@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/consults/', frontRoutes);
-app.use('/data/', generalRoutes);
+app.use('/api/sensors/', generalRoutes);
 
 
 export default app;

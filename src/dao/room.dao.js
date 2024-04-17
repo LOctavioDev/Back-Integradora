@@ -227,7 +227,7 @@ roomDao.getInternalLightOne = async () => {
       $match: {
         "type": { $regex: /Actuador/i }, // Utilizamos $regex para buscar "Actuador"
         "name": "Luz Interior",
-        "actions.name": { $regex: /Luz interior/i } // Ajustamos la expresión regular para que coincida con "Luz interior apagada" o "Luz interior encendida"
+        "actions.name": { $regex: /Luz Interior/i } // Ajustamos la expresión regular para que coincida con "Luz interior apagada" o "Luz interior encendida"
       }
     },
     {
@@ -533,6 +533,153 @@ roomDao.getAllTwo = async () => {
 
 roomDao.getAllThree = async () => {
   return await room3.find();
+}
+
+roomDao.getAvg1 = async () => {
+  return await room1.aggregate([
+      // Etapa 1: Filtrar documentos para los últimos 7 días
+      {
+         $match: {
+             startsAt: {
+                 $gte: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000) // Fecha actual menos 7 días
+             }
+         }
+     },
+     // Etapa 2: Agregar un nuevo campo "diaInicio" que contenga solo la fecha (sin la hora) de "startsAt"
+     {
+         $addFields: {
+             diaInicio: { $dateToString: { format: "%Y-%m-%d", date: "$startsAt" } }
+         }
+     },
+     // Etapa 3: Desenrollar (unwind) el arreglo de lecturas (readings)
+     {
+         $unwind: "$readings"
+     },
+     // Etapa 4: Proyectar solo las lecturas de interés (temperatura, humedad y gas)
+     {
+         $match: {
+             "readings.name": { $in: ["Deteccion de Temperatura", "Deteccion de Humedad"] }
+         }
+     },
+     // Etapa 5: Convertir las lecturas numéricas de temperatura, humedad y gas
+     {
+         $set: {
+             "readings.value": { $toDouble: "$readings.value" }
+         }
+     },
+     // Etapa 6: Agrupar por día y calcular los promedios de temperatura, humedad y gas
+     {
+         $group: {
+             _id: "$diaInicio",
+             temperaturaPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Deteccion de Temperatura"] }, "$readings.value", null] } },
+             humedadPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Deteccion de Humedad"] }, "$readings.value", null] } },
+          //    gasPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Concentracion de Gas"] }, "$readings.value", null] } }
+         }
+     },
+     // Etapa 7: Ordenar los resultados por fecha de inicio
+     {
+         $sort: { _id: 1 } // Orden ascendente por fecha de inicio
+     }
+     ]);
+     
+}
+
+roomDao.getAvg2 = async () => {
+  return await room2.aggregate([
+      // Etapa 1: Filtrar documentos para los últimos 7 días
+      {
+         $match: {
+             startsAt: {
+                 $gte: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000) // Fecha actual menos 7 días
+             }
+         }
+     },
+     // Etapa 2: Agregar un nuevo campo "diaInicio" que contenga solo la fecha (sin la hora) de "startsAt"
+     {
+         $addFields: {
+             diaInicio: { $dateToString: { format: "%Y-%m-%d", date: "$startsAt" } }
+         }
+     },
+     // Etapa 3: Desenrollar (unwind) el arreglo de lecturas (readings)
+     {
+         $unwind: "$readings"
+     },
+     // Etapa 4: Proyectar solo las lecturas de interés (temperatura, humedad y gas)
+     {
+         $match: {
+             "readings.name": { $in: ["Deteccion de Temperatura", "Deteccion de Humedad"] }
+         }
+     },
+     // Etapa 5: Convertir las lecturas numéricas de temperatura, humedad y gas
+     {
+         $set: {
+             "readings.value": { $toDouble: "$readings.value" }
+         }
+     },
+     // Etapa 6: Agrupar por día y calcular los promedios de temperatura, humedad y gas
+     {
+         $group: {
+             _id: "$diaInicio",
+             temperaturaPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Deteccion de Temperatura"] }, "$readings.value", null] } },
+             humedadPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Deteccion de Humedad"] }, "$readings.value", null] } },
+          //    gasPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Concentracion de Gas"] }, "$readings.value", null] } }
+         }
+     },
+     // Etapa 7: Ordenar los resultados por fecha de inicio
+     {
+         $sort: { _id: 1 } // Orden ascendente por fecha de inicio
+     }
+     ]);
+     
+}
+
+roomDao.getAvg3 = async () => {
+  return await room3.aggregate([
+      // Etapa 1: Filtrar documentos para los últimos 7 días
+      {
+         $match: {
+             startsAt: {
+                 $gte: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000) // Fecha actual menos 7 días
+             }
+         }
+     },
+     // Etapa 2: Agregar un nuevo campo "diaInicio" que contenga solo la fecha (sin la hora) de "startsAt"
+     {
+         $addFields: {
+             diaInicio: { $dateToString: { format: "%Y-%m-%d", date: "$startsAt" } }
+         }
+     },
+     // Etapa 3: Desenrollar (unwind) el arreglo de lecturas (readings)
+     {
+         $unwind: "$readings"
+     },
+     // Etapa 4: Proyectar solo las lecturas de interés (temperatura, humedad y gas)
+     {
+         $match: {
+             "readings.name": { $in: ["Deteccion de Temperatura", "Deteccion de Humedad"] }
+         }
+     },
+     // Etapa 5: Convertir las lecturas numéricas de temperatura, humedad y gas
+     {
+         $set: {
+             "readings.value": { $toDouble: "$readings.value" }
+         }
+     },
+     // Etapa 6: Agrupar por día y calcular los promedios de temperatura, humedad y gas
+     {
+         $group: {
+             _id: "$diaInicio",
+             temperaturaPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Deteccion de Temperatura"] }, "$readings.value", null] } },
+             humedadPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Deteccion de Humedad"] }, "$readings.value", null] } },
+          //    gasPromedio: { $avg: { $cond: [{ $eq: ["$readings.name", "Concentracion de Gas"] }, "$readings.value", null] } }
+         }
+     },
+     // Etapa 7: Ordenar los resultados por fecha de inicio
+     {
+         $sort: { _id: 1 } // Orden ascendente por fecha de inicio
+     }
+     ]);
+     
 }
 
 export default roomDao;
