@@ -90,8 +90,13 @@ router.get('/chart/livingroom', livingRoomController.getDataChart)
 //GRAFICA PROMEDIOS
 router.get('/kitchen/avg', kitchenController.getAverage)
 router.get('/livingroom/avg', livingRoomController.getAverage)
+router.get('/room1/avg', roomController.getAvg1)
+router.get('/room2/avg', roomController.getAvg2)
+router.get('/room3/avg', roomController.getAvg3)
+
 
 //GRAFICA GENERAL
 router.get('/chart', generalController.getDataChart)
+router.get('/chart/v2', generalController.getSensorsAndActions)
 export default router;
 

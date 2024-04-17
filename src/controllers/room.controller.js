@@ -249,4 +249,31 @@ roomController.getAllThree = async (req, res) => {
         error : err.msg}));
 }
 
+roomController.getAvg1 = async (req, res) => {
+    roomDao.getAvg1()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+roomController.getAvg2 = async (req, res) => {
+    roomDao.getAvg2()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}
+
+roomController.getAvg3 = async (req, res) => {
+    roomDao.getAvg3()
+    .then(data => 
+        res.json(data))
+    .catch(err => res.status(500).json({
+        success: false,
+        error : err.msg}));
+}   
+
 export default roomController;
